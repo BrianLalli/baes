@@ -1,0 +1,37 @@
+[
+  {
+    "username":"midnight",
+    "email":"whiskers@yahoo.com",
+    "password":"123password",
+    "firstName":"Bagheera",
+    "lastName":"Baqla"
+  },
+  {
+    "username":"tuxedocat",
+    "email":"murderclaws@meow.com",
+    "password":"password456",
+    "firstName":"Sylvester",
+    "lastName":"Jones"
+  },
+  {
+    "username":"floppyears",
+    "email":"digging@mudbaths.com",
+    "password":"bones987",
+    "firstName":"Archimedes",
+    "lastName":"Figueroa"
+  },
+  {
+    "username":"latenightwalkies",
+    "email":"trotting@woof.com",
+    "password":"leash222",
+    "firstName":"Boswell",
+    "lastName":"Baca"
+  },
+  {
+    "username":"wkndatmoonies",
+    "email":"heterochromy@husky.net",
+    "password":"squeak67",
+    "firstName":"Moonie",
+    "lastName":"Lalli"
+  }
+]
