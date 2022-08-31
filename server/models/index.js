@@ -1,3 +1,5 @@
-const Profile = require('./Profile');
+//import all models here
 
-module.exports = { Profile };
+const User = require('./User');
+
+module.exports = { User };
