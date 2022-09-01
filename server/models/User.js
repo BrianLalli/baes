@@ -29,15 +29,51 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-//still need to add all NOT required fields
-//allergies
-//foods i love
-//foods i hate
-//birthday
-//phobias
-//hobbies
-//connections [array of other users]
-
+  allergies: 
+  {
+    type: String,
+    required: false,
+    trim: true,
+  },
+  faveFoods: 
+  {
+    type: String,
+    required: false,
+     trim: true,
+  },
+  hateFoods: 
+  {
+    type: String,
+    required: false,
+     trim: true,
+  },
+  birthday: 
+  {
+    type: Date,
+    trim: true,
+    required: false,
+  },
+  phobias: 
+  {
+    type: String,
+     trim: true,
+  },
+  hobbies: 
+  {
+    type: String,
+     trim: true,
+  },
+  //arrays of other users
+  //still need to double check connections and notes 
+  connections: 
+  {
+    type: [{ Users }],
+  },
+  notes: 
+  {
+    type: [{ Notes}],
+    ref: 
+  },
 });
 
 userSchema.pre('save', async function (next) {
