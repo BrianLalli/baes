@@ -18,12 +18,27 @@ const typeDefs = gql`
     password: String
     firstName: String
     lastName: String
+    allergies: String
+    faveFoods: String
+    hateFoods: String
+    birthday: Date
+    phobias: String
+    hobbies: String 
+    connections: [{ User }]
+  }
+
+  type Notes {
+    _id: ID
+    title: String
+    content: String
+    date: Date
   }
 
   type Auth {
     token: ID!
     user: User
   }
+
 
   type Query {
     users: [User]!
