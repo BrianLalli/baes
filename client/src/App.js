@@ -3,7 +3,8 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import GetStarted from './pages/GetStarted/GetStarted';
-import Login from './pages/Login/Login'
+import Login from './pages/Login/index';
+import Home from './pages/Home/Home';
 // import Profile from './pages/Profile';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -33,6 +34,11 @@ function App() {
               <Route 
                 path="/login" 
                 element={<Login />} 
+              />
+              {/* Define a route that will take in variable data */}
+              <Route 
+                path="/home" 
+                element={<Home />} 
               />
             </Routes>
           {/* </div>
