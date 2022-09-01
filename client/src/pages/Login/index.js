@@ -1,20 +1,16 @@
 import React from 'react';
+import Login from '../../components/Login';
+// import Signup from '../../components/Signup';
+
+// import Auth from '../utils/auth';
 // import { GoogleLogin } from 'react-google-login'????????;
 
-export default function Login () {
-
+export default function LoginSignup () {
 
   return (
     <div>
-      <form>
-        <div className="login-input-container">
-          <input name="username" className="login-username" placeholder="username"></input>
-          <input name="password" className="login-password" placeholder="password"></input>
-        </div>
-        <div>
-          <button className="submit-login">submit</button>
-        </div>
-      </form>
+      <Login/>
+      {/* <Signup/> */}
     </div>
   )
 };

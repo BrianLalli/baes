@@ -72,7 +72,7 @@ const userSchema = new Schema({
   notes: 
   {
     type: [{ Notes}],
-    ref: 
+    // ref: 
   },
 });
 
