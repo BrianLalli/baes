@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const noteSchema = require('./Notes');
 
 const userSchema = new Schema({
   username: {
@@ -65,15 +66,17 @@ const userSchema = new Schema({
   },
   //arrays of other users
   //still need to double check connections and notes 
-  connections: 
+  connections: [
   {
-    type: [{ Users }],
-  },
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
+],
   notes: 
-  {
-    type: [{ Notes}],
-    ref: 
-  },
+    {
+      type: [ noteSchema ]
+    }
+  
 });
 
 userSchema.pre('save', async function (next) {

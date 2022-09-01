@@ -24,7 +24,7 @@ const typeDefs = gql`
     birthday: Date
     phobias: String
     hobbies: String 
-    connections: [{ User }]
+    connections: [ User ]
   }
 
   type Notes {
@@ -52,7 +52,20 @@ const typeDefs = gql`
       password: String!
       firstName: String!
       lastName: String!): Auth
-    }
+
+    // we need an update user mutation that includes all paramters under the user
+      
+      login(
+        email: String!
+        password: String!): Auth
+
+    addNote(
+      userId: ID!
+      note: Notes!
+    ): User
+  }
+
+  
 `;
 
 module.exports = typeDefs;
