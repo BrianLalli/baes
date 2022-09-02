@@ -2,14 +2,9 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-<<<<<<< HEAD
-import GetStarted from './pages/GetStarted/GetStarted';
-import Login from './pages/Login/index';
-import Home from './pages/Home/Home';
-=======
 import GetStarted from './pages/GetStarted';
-import Login from './pages/Login'
->>>>>>> origin
+import Login from './pages/Login';
+import Home from './pages/Home/Home';
 // import Profile from './pages/Profile';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
