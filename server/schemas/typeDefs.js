@@ -1,14 +1,5 @@
-//still need to add all NOT required fields
-//allergies
-//foods i love
-//foods i hate
-//birthday
-//phobias
-//hobbies
-//connections [array of other users]
-
-
 const { gql } = require('apollo-server-express');
+const { GraphQLScalarType, Kind } = require('graphql');
 
 const typeDefs = gql`
   type User {
@@ -21,6 +12,7 @@ const typeDefs = gql`
     allergies: String
     faveFoods: String
     hateFoods: String
+    birthday: String
     phobias: String
     hobbies: String 
     connections: [ User ]
@@ -30,6 +22,7 @@ const typeDefs = gql`
     _id: ID
     title: String
     content: String
+    date: String
   }
 
   type Auth {
@@ -44,19 +37,54 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    login(
+      email: String!
+      password: String!): Auth
+    
+    
     addUser(
-      username: String
+      username: String!
       email: String!
       password: String!
       firstName: String!
       lastName: String!): Auth
-      
-      login(
-        email: String!
-        password: String!): Auth
-  }
 
+   
+    updateUser(
+      _id: ID!
+      username: String
+      email: String
+      password: String
+      firstName: String
+      lastName: String
+      allergies: String
+      faveFoods: String
+      hateFoods: String
+      birthday: String
+      phobias: String
+      hobbies: String
+      connections: [ ID ]
+    ): Auth
+
+    addNote(
+      userId: ID!
+      note: String
+    ): User
   
+    
+    updateNote(
+      userId: ID!
+      title: String
+      content: String
+    ): User
+    
+    removeNote(
+      userId: ID!
+      title: String
+      content: String
+    ): User
+  
+  }
 `;
 
 module.exports = typeDefs;
