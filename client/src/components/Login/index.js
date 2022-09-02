@@ -43,6 +43,12 @@ export default function Login () {
     });
   };
 
+  // error form
+  const handleErrorSubmit = async (event) => {
+    event.preventDefault();
+
+  }
+
   return (
     <div className="login-container">
       {data ? (
@@ -79,9 +85,9 @@ export default function Login () {
         </form>
       )}
 
-      {error && (
+     {error && (
         <div className="my-3 p-3 bg-danger text-white">
-          {error.message}
+          {console.log(error)}
         </div>
       )}
 
