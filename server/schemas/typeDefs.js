@@ -47,18 +47,20 @@ const typeDefs = gql`
 
    
     updateUser(
-      _id: ID!
-      username: String
-      email: String
-      password: String
-      allergies: String
-      faveFoods: String
-      hateFoods: String
-      birthday: String
-      phobias: String
-      hobbies: String
-      connections: [ ID ]
+      user: User
+    ): User
+
+    deleteUser(
+      user: User
+    ): Int
+
+    addConnection(
+      user: ID!
     ): Auth
+
+    deleteConnection(
+      user: ID!
+    ): Int
 
     addNote(
       userId: ID!
@@ -76,7 +78,7 @@ const typeDefs = gql`
       userId: ID!
       title: String
       content: String
-    ): User
+    ): Int
   
   }
 `;
