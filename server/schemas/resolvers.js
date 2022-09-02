@@ -45,24 +45,45 @@ const resolvers = {
 
     updateUser: async(parent, args) => {
       if(context.user) {
-        return User.findOneAndUpdate({_id: args.id},args,{new: true}
-        //   { 
-        //     // username: username,
-        //     // email: email,
-        //     // password: password,
-        //     // firstName: firstName,
-        //     // lastName: lastName,
-        //     // allergies: allergies, 
-        //     // faveFoods: faveFoods, 
-        //     // hateFoods: hateFoods,
-        //     // birthday: birthday,
-        //     // phobias: phobias,
-        //     // hobbies: hobbies, 
-        //     // connections: [User]
-        // }
+        return User.findOneAndUpdate({_id: args.user.id},args.user,{new: true}
         )
       }
     },
+
+    deleteUser: async(parent, args) => {
+      if(context.user) {
+        return User.deleteOne({_id: args.user.id})
+      }
+    },
+
+    // addconnection
+    // add by id, remove from set: connection
+    addConnection: async(parent, {user}, context) => {
+      if(context.user) {
+        return User.findOneAndUpdate(
+          {_id: context.user._id},
+          {$addToSet: {connections: user}},
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+    },
+
+    // remove a connection
+    deleteConnection: async(parent, {user}, context) => {
+      if(context.user) {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { connections: user } },
+        { new: true,
+          runValidators: true,
+        }
+      );
+    }
+  },
+    // remove by id, remove from set: connection
 
 
     addNote: async (parent, { userId, note }, context) => {
@@ -80,9 +101,24 @@ const resolvers = {
   }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeNote: async (parent, { note }, context) => {
+
+
+    // update note
+    updateNote: async (parent, { note }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { notes: note } }
+          // { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+
+    removeNote: async (parent, { note }, context) => {
+      if (context.user) {
+        return User.deleteOne(
           { _id: context.user._id },
           { $pull: { notes: note } },
           { new: true }
