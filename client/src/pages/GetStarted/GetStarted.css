@@ -11,6 +11,10 @@
     color: #273057
 }
 
+.btn-link {
+    text-decoration: none !important;
+}
+
 .btn-info {
     background-color: #008080 !important;
     border: solid 1px #273057 !important
@@ -20,4 +24,20 @@
     background-color: #008080 !important;
     color: #f4f1f5;
     font-family: 'Neucha', cursive;
+}
+
+.section-title {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 75px;
+    color: #e051ab
+
+}
+
+.card {
+    border: none !important;
+    padding: 0px !important;
+}
+
+.logo {
+    border-radius: 20%;
 }
