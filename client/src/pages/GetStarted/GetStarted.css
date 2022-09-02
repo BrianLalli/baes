@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Neucha&family=Kaushan+Script');
+
+.title {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 200px;
+    color: #e051ab
+}
+
+.subtitle {
+    font-family: 'Neucha', cursive;
+    color: #273057
+}
+
+.btn-info {
+    background-color: #008080 !important;
+    border: solid 1px #273057 !important
+}
+
+.btn-link {
+    background-color: #008080 !important;
+    color: #f4f1f5;
+    font-family: 'Neucha', cursive;
+}

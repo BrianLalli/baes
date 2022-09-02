@@ -2,7 +2,7 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import GetStarted from './pages/GetStarted/GetStarted';
+import GetStarted from './pages/GetStarted';
 import Login from './pages/Login'
 // import Profile from './pages/Profile';
 // import Header from './components/Header';
