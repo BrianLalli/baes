@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './styles.css';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
@@ -12,6 +13,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
+
   const [addProfile, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
@@ -75,8 +77,6 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: 'pointer' }}
                   type="submit"
                 >
                   Submit
