@@ -20,16 +20,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  firstName:
-  {
-    type: String,
-    required: true,
-  },
-  lastName:
-  {
-    type: String,
-    required: true,
-  },
   allergies: 
   {
     type: String,

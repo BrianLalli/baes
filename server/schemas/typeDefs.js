@@ -7,8 +7,6 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    firstName: String
-    lastName: String
     allergies: String
     faveFoods: String
     hateFoods: String
@@ -45,9 +43,7 @@ const typeDefs = gql`
     addUser(
       username: String!
       email: String!
-      password: String!
-      firstName: String!
-      lastName: String!): Auth
+      password: String!): Auth
 
    
     updateUser(
