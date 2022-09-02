@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
-const NoteSchema = new Schema(
+const noteSchema = new Schema(
   {
     // owner: userId, 
     title: {
@@ -17,16 +17,8 @@ const NoteSchema = new Schema(
       type: Date, 
       default: Date.now
     },
-    
-    // user: [
-    //   {
-    //   type: Mongoose.Schema.Types.UserId, 
-    //   ref: 'User'
-    //   }
-    // ]
   }
 );
 
-const Note = model('Note', NoteSchema);
 
-module.exports = Note; 
+module.exports = noteSchema; 

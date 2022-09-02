@@ -47,7 +47,7 @@ export default function Login () {
     <div className="login-container">
       {data ? (
         <p>
-          <Link to="/home">Great job!</Link>
+          Great!
         </p>
       ) : (
         <form onSubmit={handleFormSubmit}>

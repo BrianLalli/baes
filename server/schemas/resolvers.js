@@ -40,156 +40,156 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addNote: async (parent, { userId, note }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { notes: note },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-  }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeNote: async (parent, { note }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: context.person._id },
-          { $pull: { notes: note } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addAllergies: async (parent, { userId, allergy }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { allergies: allergy },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-  }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeAllergies: async (parent, { allergy }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: context.person._id },
-          { $pull: { allergies: allergy } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addFaveFoods: async (parent, { userId, faveFood }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { faveFoods: faveFood },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-  }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeFaveFoods: async (parent, { faveFood }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: context.person._id },
-          { $pull: { faveFoods: faveFood } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addHateFoods: async (parent, { userId, hateFood }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { hateFoods: hateFood },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-  }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeHateFoods: async (parent, { hateFood }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: context.person._id },
-          { $pull: { hateFoods: hateFood } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addPhobias: async (parent, { userId, phobia}, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { phobias: phobia },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-  }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removePhobias: async (parent, { phobia }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: context.person._id },
-          { $pull: { phobias: phobia } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addHobbies: async (parent, { userId, hobby}, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { hobbies: hobby},
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-  }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeHobbies: async (parent, { hobby }, context) => {
-      if (context.person) {
-        return User.findOneAndUpdate(
-          { _id: context.person._id },
-          { $pull: { hobbies: hobby } },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+  //   addNote: async (parent, { userId, note }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: userId },
+  //         {
+  //           $addToSet: { notes: note },
+  //         },
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  // }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   removeNote: async (parent, { note }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: context.person._id },
+  //         { $pull: { notes: note } },
+  //         { new: true }
+  //       );
+  //     }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addAllergies: async (parent, { userId, allergy }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: userId },
+  //         {
+  //           $addToSet: { allergies: allergy },
+  //         },
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  // }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   removeAllergies: async (parent, { allergy }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: context.person._id },
+  //         { $pull: { allergies: allergy } },
+  //         { new: true }
+  //       );
+  //     }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addFaveFoods: async (parent, { userId, faveFood }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: userId },
+  //         {
+  //           $addToSet: { faveFoods: faveFood },
+  //         },
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  // }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   removeFaveFoods: async (parent, { faveFood }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: context.person._id },
+  //         { $pull: { faveFoods: faveFood } },
+  //         { new: true }
+  //       );
+  //     }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addHateFoods: async (parent, { userId, hateFood }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: userId },
+  //         {
+  //           $addToSet: { hateFoods: hateFood },
+  //         },
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  // }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   removeHateFoods: async (parent, { hateFood }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: context.person._id },
+  //         { $pull: { hateFoods: hateFood } },
+  //         { new: true }
+  //       );
+  //     }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addPhobias: async (parent, { userId, phobia}, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: userId },
+  //         {
+  //           $addToSet: { phobias: phobia },
+  //         },
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  // }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   removePhobias: async (parent, { phobia }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: context.person._id },
+  //         { $pull: { phobias: phobia } },
+  //         { new: true }
+  //       );
+  //     }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   addHobbies: async (parent, { userId, hobby}, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: userId },
+  //         {
+  //           $addToSet: { hobbies: hobby},
+  //         },
+  //         {
+  //           new: true,
+  //           runValidators: true,
+  //         }
+  //       );
+  // }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
+  //   removeHobbies: async (parent, { hobby }, context) => {
+  //     if (context.person) {
+  //       return User.findOneAndUpdate(
+  //         { _id: context.person._id },
+  //         { $pull: { hobbies: hobby } },
+  //         { new: true }
+  //       );
+  //     }
+  //     throw new AuthenticationError('You need to be logged in!');
+  //   },
     //addconnection
     //removeconnection
     //addbirthday

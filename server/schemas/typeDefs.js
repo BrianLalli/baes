@@ -21,17 +21,15 @@ const typeDefs = gql`
     allergies: String
     faveFoods: String
     hateFoods: String
-    birthday: Date
     phobias: String
     hobbies: String 
-    connections: [{ User }]
+    connections: [ User ]
   }
 
   type Notes {
     _id: ID
     title: String
     content: String
-    date: Date
   }
 
   type Auth {
@@ -52,7 +50,13 @@ const typeDefs = gql`
       password: String!
       firstName: String!
       lastName: String!): Auth
-    }
+      
+      login(
+        email: String!
+        password: String!): Auth
+  }
+
+  
 `;
 
 module.exports = typeDefs;
