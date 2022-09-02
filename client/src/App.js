@@ -26,13 +26,13 @@ function App() {
       <ApolloProvider client={client}>
         {/* Wrap page elements in Router component to keep track of location state */}
         <Router>
-          <Grid
+          {/* <Grid
             container
-            display={"flex"}
-            flexDirection={"column"}
-            minHeight={"100vh"}
-            justifyContent={"space-between"}
-          ></Grid>
+            display={'flex'}
+            flexDirection={'column'}
+            minHeight={'100vh'}
+            justifyContent={'space-between'}
+          ></Grid> */}
           <Grid item>
             <Navbar darkMode={darkMode} handleClick={handleClick} />
           </Grid>{" "}
