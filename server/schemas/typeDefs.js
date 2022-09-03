@@ -47,12 +47,12 @@ const typeDefs = gql`
 
    
     updateUser(
-      user: User
+      user: ID!
     ): User
 
     deleteUser(
-      user: User
-    ): Int
+      user: ID!
+    ): User
 
     addConnection(
       user: ID!
