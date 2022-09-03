@@ -6,6 +6,10 @@ import './admin.css';
 //missing functionality to text boxes
 
 export default function Admin () {
+ //mutation to fetch data
+ //add logic to populate form fields
+ //logic to save state of each input that user submits
+ //click save changes -> mutuation to update user 
   return (
     <div className='container'>
     <div className='edit-profile-container row justify-content-center'>
