@@ -12,6 +12,7 @@ import Style from "./App.module.scss";
 import { Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
+import Admin from './pages/Admin';
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -50,6 +51,7 @@ function App() {
             {/* Define a route that will take in variable data */}
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
           {/* </div>
           {/* <Footer /> */}

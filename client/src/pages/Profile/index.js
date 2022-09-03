@@ -2,11 +2,11 @@ import React from 'react';
 // import { Link } from "react-router-dom";
 import './Profile.css';
 
-export default function Profile(){
-    <div className='container'>
-        <p>Username's Profile</p>
-    </div>
-}
+// export default function Profile(){
+//     <div className='container'>
+//         <p>Username's Profile</p>
+//     </div>
+// }
 
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -14,7 +14,7 @@ import { useQuery } from '@apollo/client';
 
 import { QUERY_SINGLE_USER, QUERY_ME } from '../../utils/queries';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth.js';
 
 const Profile = () => {
   const { userId } = useParams();
@@ -59,4 +59,4 @@ const Profile = () => {
   );
 };
 
-// export default Profile;
+export default Profile;
