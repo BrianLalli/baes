@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../../components/Login';
 import Signup from '../../components/Signup';
+import './Login.css';
 
 // import Auth from '../utils/auth';
 // import { GoogleLogin } from 'react-google-login'????????;
@@ -8,7 +9,7 @@ import Signup from '../../components/Signup';
 export default function LoginSignup () {
 
   return (
-    <div>
+    <div className="login-signup-container">
       <Login/>
       <Signup/>
     </div>

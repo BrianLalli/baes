@@ -17,6 +17,7 @@ export default function GetStarted(){
                 </div>
                 <div className="col-12 col-md-6">
                     <img className=" logo" src="LogoElephant3.png" alt='BAEs logo' width="600" height="550"></img>
+
                 </div>
             </div>
 

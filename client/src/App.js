@@ -34,6 +34,7 @@ function App() {
             justifyContent={'space-between'}
           ></Grid> */}
           {/* <Grid item> */}
+
             <Navbar darkMode={darkMode} handleClick={handleClick} />
           {/* </Grid>{" "} */}
           {/* <div className="flex-column justify-flex-start min-100-vh"> */}
