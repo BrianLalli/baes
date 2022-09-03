@@ -11,19 +11,17 @@
     color: #273057
 }
 
-.btn-link {
-    text-decoration: none !important;
-}
-
 .btn-info {
     background-color: #008080 !important;
-    border: solid 1px #273057 !important
+    border: solid 3px #273057 !important
 }
 
 .btn-link {
     background-color: #008080 !important;
     color: #f4f1f5;
     font-family: 'Neucha', cursive;
+    text-decoration: none !important;
+    font-size: 40px;
 }
 
 .section-title {
