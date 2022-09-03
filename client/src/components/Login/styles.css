@@ -1,0 +1,37 @@
+::placeholder {
+  color: var(--blue);
+}
+
+h4 {
+  color: var(--pink);
+  font-size: 2.5rem;
+}
+
+.login-container {
+  width: 100%;
+  margin-left: 30%;
+  margin-bottom: 50px;
+}
+
+.form-input {
+  width: 60%;
+  border-radius: 10px;
+  border: 1px solid var(--orange);
+  padding: 5px 10px;
+  margin: 5px;
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+.form-input:focus {
+  outline: 0;
+  background: var(--orange);
+}
+
+.submit-login-button {
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+}
+

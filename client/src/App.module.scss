@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
 @import "./variables.modules";
 
+:root {
+    --white: #F4F1F5;
+    --orange: #EBA28C;
+    --pink: #E051AB;
+    --green: #008080;
+    --blue: #273057;
+}
 
 body {
     font-family: 'Roboto', Helvetica, sans-serif;
