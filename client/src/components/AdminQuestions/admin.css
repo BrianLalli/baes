@@ -1,0 +1,22 @@
+.edit-profile-container {
+  width: 90%;
+}
+
+.img-thumbnail {
+  height: 200px;
+  width: 200px;
+}
+
+.img-circle {
+  border-radius: 60%;
+}
+
+.custom-text-align {
+  text-align: left;
+}
+
+#user-id {
+  color: #273057;
+  font-weight: bolder;
+}
+
