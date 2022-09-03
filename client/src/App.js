@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import Navbar from "./components/Navbar/index";
 // import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
@@ -28,14 +28,15 @@ function App() {
         <Router>
           {/* <Grid
             container
-            display={"flex"}
-            flexDirection={"column"}
-            minHeight={"100vh"}
-            justifyContent={"space-between"}
+            display={'flex'}
+            flexDirection={'column'}
+            minHeight={'100vh'}
+            justifyContent={'space-between'}
           ></Grid> */}
-          <Grid item>
+          {/* <Grid item> */}
+
             <Navbar darkMode={darkMode} handleClick={handleClick} />
-          </Grid>{" "}
+          {/* </Grid>{" "} */}
           {/* <div className="flex-column justify-flex-start min-100-vh"> */}
           {/* <Header />
           <div className="container"> */}
@@ -48,6 +49,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             {/* Define a route that will take in variable data */}
             <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           {/* </div>
           {/* <Footer /> */}
