@@ -29,7 +29,7 @@ export const ADD_USER = gql`
 
 export const UPDATE_USER = gql`
   mutation updateUser($user: User!) {
-    updateUser (args: { $user }) {
+    updateUser (args: $user ) {
       token
       user {
         _id
@@ -43,7 +43,7 @@ export const UPDATE_USER = gql`
 // delete user
 export const DELETE_USER = gql`
   mutation deleteUser($user: User!) {
-    deleteUser(args: {$user}) {
+    deleteUser(args:$user) {
       user {
         _id
         email
@@ -97,7 +97,6 @@ export const ADD_NOTE = gql`
         }
       }
     }
-  }
 `;
 
 //update notes
@@ -110,7 +109,6 @@ export const UPDATE_NOTE = gql`
         }
       }
     }
-  }
 `;
 
 //remove notes
@@ -123,7 +121,6 @@ export const REMOVE_NOTE = gql`
         }
       }
     }
-  }
 `;
 
 
