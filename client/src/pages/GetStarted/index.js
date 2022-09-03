@@ -16,13 +16,14 @@ export default function GetStarted(){
                     </button>
                 </div>
                 <div className="col-12 col-md-6">
-                    <img className=" logo" src="LogoElephant.png" alt='BAEs logo' width="600" height="550"></img>
+                    <img className=" logo" src="LogoElephant3.png" alt='BAEs logo' width="600" height="550"></img>
+
                 </div>
             </div>
 
             <div className= 'container mt-5'>
                 <div className = 'row'>
-                    <h3 className='section-title col-12 text-center' align-text-center mt-2>How does it work?
+                    <h3 className='section-title col-12 text-center m-2' >How does it work?
                     </h3>
                 </div>
 
