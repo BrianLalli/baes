@@ -52,7 +52,8 @@ const typeDefs = gql`
 
     deleteUser(
       user: ID!
-    ): Int
+    ): User
+
 
     addConnection(
       user: ID!
