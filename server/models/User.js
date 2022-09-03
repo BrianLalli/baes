@@ -64,8 +64,8 @@ const userSchema = new Schema({
 ],
   notes: 
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Note'
+      // type: Schema.Types.ObjectId,
+      ref: [noteSchema]
     }
   
 });

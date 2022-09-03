@@ -43,18 +43,18 @@ const resolvers = {
       return { token, user };
     },
 
-    updateUser: async(parent, args) => {
+    updateUser: async(parent, args, context) => {
       if(context.user) {
-        return User.findOneAndUpdate({_id: args.user.id},args.user,{new: true}
-
+        return User.findOneAndUpdate({_id: args.user._id},args.user,{new: true}
         )
       }
     },
 
-    deleteUser: async(parent, args) => {
+    deleteUser: async(parent, args, context) => {
       if(context.user) {
-        return User.deleteOne({_id: args.user.id})
+        return User.deleteOne({_id: context.user._id})
       }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     // addconnection

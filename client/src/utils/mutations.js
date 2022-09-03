@@ -1,5 +1,19 @@
 import { gql } from '@apollo/client';
 
+
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        email
+      }
+    }
+  }
+`;
+
+
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -12,9 +26,10 @@ export const ADD_USER = gql`
   }
 `;
 
-export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+
+export const UPDATE_USER = gql`
+  mutation updateUser($user: User!) {
+    updateUser (args: $user ) {
       token
       user {
         _id
@@ -22,6 +37,90 @@ export const LOGIN_USER = gql`
       }
     }
   }
+`;
+
+
+// delete user
+export const DELETE_USER = gql`
+  mutation deleteUser($user: User!) {
+    deleteUser(args:$user) {
+      user {
+        _id
+        email
+      }
+    }
+  }
+`;
+
+
+
+//add connection
+export const ADD_CONNECTION = gql`
+  mutation addConnection($id: ID!) {
+    addConnection(_id: $id) {
+      user {
+        _id
+        username
+        connections {
+          username
+        }
+      }
+    }
+  }
+`;
+
+
+//delete connection
+export const DELETE_CONNECTION = gql`
+  mutation deleteConnection($id: ID!) {
+    deleteConnection(_id: $id) {
+      user {
+        _id
+        username
+        connections {
+          username
+        }
+      }
+    }
+  }
+`;
+
+
+
+//add note
+export const ADD_NOTE = gql`
+  mutation addNote($id: ID!, $note: Notes!) {
+    addNote(userId: $id, note: $note) {
+      user {
+        _id
+        notes
+        }
+      }
+    }
+`;
+
+//update notes
+export const UPDATE_NOTE = gql`
+  mutation updateNote($note: Notes!) {
+    updateNote(note: $note) {
+      user {
+        _id
+        notes
+        }
+      }
+    }
+`;
+
+//remove notes
+export const REMOVE_NOTE = gql`
+  mutation removeNote($note: Notes!) {
+    removeNote(note: $note) {
+      user {
+        _id
+        notes
+        }
+      }
+    }
 `;
 
 

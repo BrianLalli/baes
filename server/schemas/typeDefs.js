@@ -54,6 +54,7 @@ const typeDefs = gql`
       user: ID!
     ): User
 
+
     addConnection(
       user: ID!
     ): Auth
