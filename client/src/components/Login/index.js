@@ -51,46 +51,50 @@ export default function Login () {
 
   return (
     <div className="login-container">
-      {data ? (
-        <p>
-          Great!
-        </p>
-      ) : (
-        <form onSubmit={handleFormSubmit}>
-          <div className="login-input-container">
-            <input 
-              name="email" 
-              className="login-email" 
-              type="email"
-              value={formState.email}
-              placeholder="email"
-              onChange={handleChange}
-            ></input>
-            <input 
-              name="password" 
-              className="login-password" 
-              placeholder="password"
-              type="password"
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div>
-            <button 
-            className="submit-login"
-            type="submit"
-            >
-              submit
-            </button>
-          </div>
-        </form>
-      )}
 
-     {error && (
-        <div className="my-3 p-3 bg-danger text-white">
-          {console.log(error)}
-        </div>
-      )}
+      <div>
+        <h4>Login</h4>
+      </div>
 
+      <div className="login-form-container">
+        {data ? (
+          <p>
+            Great!
+          </p>
+        ) : (
+          <form onSubmit={handleFormSubmit}>
+              <input 
+                name="email" 
+                className="form-input" 
+                type="email"
+                value={formState.email}
+                placeholder="email"
+                onChange={handleChange}
+              ></input>
+              <input 
+                name="password" 
+                className="form-input" 
+                placeholder="password"
+                type="password"
+                onChange={handleChange}
+              ></input>
+              <div>
+                <button 
+                className="submit-login-button"
+                type="submit"
+                >
+                  submit
+                </button>
+              </div>
+          </form>
+        )}
+
+      {error && (
+          <div className="my-3 p-3 bg-danger text-white">
+            {console.log(error)}
+          </div>
+        )}
+      </div>
     </div>
   )
 };

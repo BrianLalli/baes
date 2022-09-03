@@ -16,7 +16,7 @@ export default function GetStarted(){
                     </button>
                 </div>
                 <div className="col-12 col-md-6">
-                    <img class=" logo" src="LogoElephant.png" alt='BAEs logo' width="600" height="550"></img>
+                    <img className=" logo" src="LogoElephant.png" alt='BAEs logo' width="600" height="550"></img>
                 </div>
             </div>
 
@@ -27,25 +27,25 @@ export default function GetStarted(){
                 </div>
 
                 <div className='row'>
-                    <div class="card col-12 col-md-4">
-                        <img src="BAEs1.svg" class="card-img-top" alt="BAEs couple" height='350px'></img>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Relationships can be Tough</h5>
-                            <p class="card-text text-center">It can be difficult to remember everything about your partner, which can cause some tension in the relationship. BAE/s can help you improve your relationship and connect with your partner.</p>
+                    <div className="card col-12 col-md-4">
+                        <img src="BAEs1.svg" className="card-img-top" alt="BAEs couple" height='350px'></img>
+                        <div className="card-body">
+                            <h5 className="card-title text-center">Relationships can be Tough</h5>
+                            <p className="card-text text-center">It can be difficult to remember everything about your partner, which can cause some tension in the relationship. BAE/s can help you improve your relationship and connect with your partner.</p>
                         </div>
                     </div>
-                    <div class="card col-12 col-md-4 d-flex align-items-center">
-                        <img src="BAEs2.svg" class="card-img-top" alt="BAEs couple" height='350px'></img>
-                        <div class="card-body">
-                            <h5 class="card-title text-center" >Store Information about Your Partner with BAE/s</h5>
-                            <p class="card-text text-center">Need help remembering those important facts? BAE/s will store information about your personal connections for you to access whenever you need. Now you'll never forget a birthday or anniversary again!</p>
+                    <div className="card col-12 col-md-4 d-flex align-items-center">
+                        <img src="BAEs2.svg" className="card-img-top" alt="BAEs couple" height='350px'></img>
+                        <div className="card-body">
+                            <h5 className="card-title text-center" >Store Information about Your Partner with BAE/s</h5>
+                            <p className="card-text text-center">Need help remembering those important facts? BAE/s will store information about your personal connections for you to access whenever you need. Now you'll never forget a birthday or anniversary again!</p>
                         </div>
                     </div>
-                    <div class="card col-12 col-md-4">
-                        <img src="BAEs3.svg" class="card-img-top" alt="BAEs couple" height='350px'></img>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Improve your Relationship</h5>
-                            <p class="card-text text-center">With this application, you will feel more connected to your partner. Learn something new about each other, plan events based on each other's likes, or store important information.</p>
+                    <div className="card col-12 col-md-4">
+                        <img src="BAEs3.svg" className="card-img-top" alt="BAEs couple" height='350px'></img>
+                        <div className="card-body">
+                            <h5 className="card-title text-center">Improve your Relationship</h5>
+                            <p className="card-text text-center">With this application, you will feel more connected to your partner. Learn something new about each other, plan events based on each other's likes, or store important information.</p>
                         </div>
                     </div>
                 </div>
