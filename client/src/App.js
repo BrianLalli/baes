@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
 import Navbar from "./components/Navbar/index";
+import Admin from './pages/Admin';
 // import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
 import { Box, Grid } from "@mui/material";
@@ -49,6 +50,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             {/* Define a route that will take in variable data */}
             <Route path="/home" element={<Home />} />
+            <Route path='/admin' element={<Admin />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
           {/* </div>

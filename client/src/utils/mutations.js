@@ -28,7 +28,7 @@ export const ADD_USER = gql`
 
 export const UPDATE_USER = gql`
   mutation updateUser($user: User!) {
-    updateUser (args: $user ) {
+    updateUser (args:$user) {
       token
       user {
         _id
@@ -40,7 +40,7 @@ export const UPDATE_USER = gql`
 
 export const DELETE_USER = gql`
   mutation deleteUser($user: User!) {
-    deleteUser(args: $user ) {
+    deleteUser(args:$user) {
       user {
         _id
         email
