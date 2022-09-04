@@ -7,14 +7,15 @@ import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const Signup = () => {
+const Signup = ({signupState, setSignupState}) => {
+
+  const [addProfile, { error, data }] = useMutation(ADD_USER);
+
   const [formState, setFormState] = useState({
     username: '',
     email: '',
     password: '',
-  });
-
-  const [addProfile, { error, data }] = useMutation(ADD_USER);
+  })
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -29,13 +30,14 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    // console.log(signupState);
 
     try {
       const { data } = await addProfile({
         variables: { ...formState },
       });
 
+      setSignupState({formState})
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
@@ -59,7 +61,7 @@ const Signup = () => {
               placeholder="username"
               name="username"
               type="text"
-              value={formState.username}
+              // value={signupState.username}
               onChange={handleChange}
             />
             <input
@@ -67,7 +69,7 @@ const Signup = () => {
               placeholder="email"
               name="email"
               type="email"
-              value={formState.email}
+              // value={signupState.email}
               onChange={handleChange}
             />
             <input
@@ -75,7 +77,7 @@ const Signup = () => {
               placeholder="password"
               name="password"
               type="password"
-              value={formState.password}
+              // value={signupState.password}
               onChange={handleChange}
             />
             <div className="submit-signup">

@@ -7,21 +7,41 @@ import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
 import Navbar from "./components/Navbar/index";
-import Admin from './pages/Admin';
+import { useMutation } from '@apollo/client';
 // import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
 import { Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
+import Admin from './pages/Admin';
 
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache(),
 });
 
+
+
+
 function App() {
+
+
+  const [userState, setUserState] = useState ({
+    username: '',
+    email: '',
+    password: '',
+    allergies: '',
+    faveFoods: '',
+    hateFoods: '',
+    birthday: '',
+    phobias: '',
+    hobbies: '', 
+    connections: [],
+  })
+
   const [darkMode, setDarkMode] = useState(true);
   const handleClick = () => setDarkMode(!darkMode);
+
   return (
     <Box className={darkMode ? Style.dark : Style.light}>
       <ApolloProvider client={client}>
@@ -47,11 +67,19 @@ function App() {
             {/* Define a default route that will render the Home component */}
             <Route path="/" element={<GetStarted />} />
             {/* Define a route that will take in variable data */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login 
+            signupState={userState} 
+            loginState={userState}
+            setSignupState={setUserState}
+            setLoginState={setUserState}/>} 
+            />
             {/* Define a route that will take in variable data */}
             <Route path="/home" element={<Home />} />
-            <Route path='/admin' element={<Admin />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<Admin             
+            adminState={userState}
+            setAdminState={setUserState}/>} 
+            />
           </Routes>
           {/* </div>
           {/* <Footer /> */}
