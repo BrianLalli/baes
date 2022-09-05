@@ -4,6 +4,7 @@ import Toggler from "../Toggler/Toggler";
 import {Link, useLocation} from "react-router-dom";
 import {Box} from "@mui/material";
 
+
 const links = [
     {
         name: "Bae/s",
@@ -63,6 +64,7 @@ export default function Navbar({darkMode, handleClick}) {
                 <li>
                     <Toggler darkMode={darkMode} handleClick={handleClick}/>
                 </li>
+  
             </Box>
         </Box>
     )

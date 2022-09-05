@@ -33,5 +33,10 @@ h4 {
   border: none;
   border-radius: 10px;
   font-size: 1.15rem;
+  margin: 5px;
+}
+
+.submit-login-button:hover {
+  background: var(--blue);
 }
 

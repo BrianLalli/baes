@@ -10,12 +10,15 @@ const resolvers = {
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
     },
-    // me: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id });
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const meData = await User.findOne({ _id: context.user._id })
+        .select('-__v -password')
+        .populate('connections');
+        return meData;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -44,9 +47,11 @@ const resolvers = {
     },
 
     updateUser: async(parent, args, context) => {
+      // console.log("context.user", context.user);
+      // console.log("args", args);
       if(context.user) {
         return User.findOneAndUpdate({_id: args.user._id},args.user,{new: true}
-        )
+        ) 
       }
     },
 
@@ -128,9 +133,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
    
-    
-    //addconnection
-    //removeconnection
     //addbirthday
   }};
 

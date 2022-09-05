@@ -7,17 +7,17 @@ import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 // import { GoogleLogin } from 'react-google-login'????????;
 
-export default function Login () {
+export default function Login ({loginState, setLoginState}) {
 
-  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+
 
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
+    setLoginState({
+      ...loginState,
       [name]: value,
     });
   };
@@ -25,10 +25,10 @@ export default function Login () {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log(loginState);
     try {
       const { data } = await login({
-        variables: { ...formState },
+        variables: { ...loginState },
       });
 
       Auth.login(data.login.token);
@@ -37,10 +37,10 @@ export default function Login () {
     }
 
     // clear form values
-    setFormState({
-      email: '',
-      password: '',
-    });
+    // setLoginState({
+    //   email: '',
+    //   password: '',
+    // });
   };
 
   // error form
@@ -58,16 +58,13 @@ export default function Login () {
 
       <div className="login-form-container">
         {data ? (
-          <p>
-            Great!
-          </p>
+          <Link to="/admin"></Link>
         ) : (
           <form onSubmit={handleFormSubmit}>
               <input 
                 name="email" 
                 className="form-input" 
                 type="email"
-                value={formState.email}
                 placeholder="email"
                 onChange={handleChange}
               ></input>
