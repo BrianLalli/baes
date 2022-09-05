@@ -44,9 +44,11 @@ const resolvers = {
     },
 
     updateUser: async(parent, args, context) => {
+      // console.log("context.user", context.user);
+      // console.log("args", args);
       if(context.user) {
         return User.findOneAndUpdate({_id: args.user._id},args.user,{new: true}
-        )
+        ) 
       }
     },
 

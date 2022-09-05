@@ -28,6 +28,11 @@ class AuthService {
     window.location.assign('/home');
   }
 
+  signup(idToken) {
+    localStorage.setItem('id_token', idToken);
+    window.location.assign('/admin');
+  }
+
   logout() {
     localStorage.removeItem('id_token');
     window.location.reload();

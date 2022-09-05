@@ -28,11 +28,13 @@ export const ADD_USER = gql`
 
 export const UPDATE_USER = gql`
   mutation updateUser($user: User!) {
-    updateUser (args:$user) {
+    updateUser (args: $user) {
       token
       user {
         _id
         email
+        password
+        username
       }
     }
   }

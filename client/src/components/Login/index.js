@@ -37,10 +37,10 @@ export default function Login ({loginState, setLoginState}) {
     }
 
     // clear form values
-    setLoginState({
-      email: '',
-      password: '',
-    });
+    // setLoginState({
+    //   email: '',
+    //   password: '',
+    // });
   };
 
   // error form
@@ -58,16 +58,13 @@ export default function Login ({loginState, setLoginState}) {
 
       <div className="login-form-container">
         {data ? (
-          <p>
-            Great!
-          </p>
+          <Link to="/admin"></Link>
         ) : (
           <form onSubmit={handleFormSubmit}>
               <input 
                 name="email" 
                 className="form-input" 
                 type="email"
-                // value={loginState.email}
                 placeholder="email"
                 onChange={handleChange}
               ></input>

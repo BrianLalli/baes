@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink,
+} from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 // import Style from './MainLayout.module.scss'
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
@@ -10,21 +13,35 @@ import Navbar from "./components/Navbar/index";
 import { useMutation } from '@apollo/client';
 // import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
-import { Box, Grid } from "@mui/material";
+import { Box as Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
 import Admin from './pages/Admin';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+
 const client = new ApolloClient({
-  uri: "/graphql",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 
-
-
 function App() {
-
 
   const [userState, setUserState] = useState ({
     username: '',
@@ -35,9 +52,10 @@ function App() {
     hateFoods: '',
     birthday: '',
     phobias: '',
-    hobbies: '', 
+    hobbies: '',
     connections: [],
   })
+
 
   const [darkMode, setDarkMode] = useState(true);
   const handleClick = () => setDarkMode(!darkMode);
@@ -75,7 +93,10 @@ function App() {
             />
             {/* Define a route that will take in variable data */}
             <Route path="/home" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile 
+            userState={userState}
+            setUserState={setUserState}/>}
+            />
             <Route path="/admin" element={<Admin             
             adminState={userState}
             setAdminState={setUserState}/>} 

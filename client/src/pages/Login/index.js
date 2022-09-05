@@ -11,7 +11,7 @@ export default function LoginSignup ({setLoginState, loginState, setSignupState,
   return (
     <div className="login-signup-container">
       <Login setLoginState={setLoginState} loginState={loginState}/>
-      <Signup setSignupState={setSignupState} />
+      <Signup setSignupState={setSignupState} signupState={signupState} />
     </div>
   )
 };

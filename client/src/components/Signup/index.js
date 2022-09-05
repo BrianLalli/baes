@@ -11,18 +11,12 @@ const Signup = ({signupState, setSignupState}) => {
 
   const [addProfile, { error, data }] = useMutation(ADD_USER);
 
-  const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
-  })
-
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
+    setSignupState({
+      ...signupState,
       [name]: value,
     });
   };
@@ -30,18 +24,17 @@ const Signup = ({signupState, setSignupState}) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log(signupState);
 
     try {
       const { data } = await addProfile({
-        variables: { ...formState },
+        variables: { ...signupState },
       });
 
-      setSignupState({formState})
-      Auth.login(data.addUser.token);
+      Auth.signup(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
+    console.log(signupState)
   };
 
   return (
@@ -53,7 +46,7 @@ const Signup = ({signupState, setSignupState}) => {
 
       <div className="signup-form-container">
         {data ? (
-            <Link to="/home"></Link>
+            <Link to="/admin"></Link>
         ) : (
           <form onSubmit={handleFormSubmit}>
             <input
@@ -61,7 +54,6 @@ const Signup = ({signupState, setSignupState}) => {
               placeholder="username"
               name="username"
               type="text"
-              // value={signupState.username}
               onChange={handleChange}
             />
             <input
@@ -69,7 +61,6 @@ const Signup = ({signupState, setSignupState}) => {
               placeholder="email"
               name="email"
               type="email"
-              // value={signupState.email}
               onChange={handleChange}
             />
             <input
@@ -77,7 +68,6 @@ const Signup = ({signupState, setSignupState}) => {
               placeholder="password"
               name="password"
               type="password"
-              // value={signupState.password}
               onChange={handleChange}
             />
             <div className="submit-signup">
