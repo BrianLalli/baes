@@ -5,7 +5,7 @@
 }
 body {
   margin: 0;
-  font-family: 'Neucha', cursive;
+  font-family: 'Neucha', cursive !important;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

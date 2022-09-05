@@ -14,9 +14,19 @@ export const QUERY_SINGLE_USER = gql`
     user(userId: $userId) {
       _id
       username
+      email
+      allergies
+      faveFoods
+      hateFoods
+      birthday
+      phobias
+      hobbies
+      
     }
   }
 `;
+
+
 
 export const QUERY_ME = gql`
   query me {
