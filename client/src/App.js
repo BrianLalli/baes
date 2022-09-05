@@ -9,8 +9,12 @@ import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
+<<<<<<< Updated upstream
 import Navbar from "./components/Navbar/index";
 import { useMutation } from '@apollo/client';
+=======
+import Navbar from "./components/Navbar";
+>>>>>>> Stashed changes
 // import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
 import { Box as Box, Grid } from "@mui/material";
