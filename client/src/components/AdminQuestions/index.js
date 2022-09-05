@@ -1,105 +1,122 @@
 import React, { useState } from 'react';
 // import { useMutation } from '@apollo/client';
 // import { Link } from 'react-router-dom';
+// import 'bootstrap/dist/css/bootstrap.css';
 import './admin.css';
 
 //missing functionality to text boxes
 
-export default function Admin () {
- //mutation to fetch data
- //add logic to populate form fields
- //logic to save state of each input that user submits
- //click save changes -> mutuation to update user 
+export default function Admin() {
+  //mutation to fetch data
+  //add logic to populate form fields
+  //logic to save state of each input that user submits
+  //click save changes -> mutuation to update user 
   return (
     <div className='container'>
-    <div className='edit-profile-container row justify-content-center'>
-      <div className='col-12 col-md-7 text-center align-items-center'>
-        <img src='https://avatars.githubusercontent.com/u/74509058?v=4' alt='user avatar'
-          className='img-circle img-thumbnail' />
+      <div className='edit-profile-container row'>
+        <div className='col-12 col-md-7 text-center'>
+          <img src='https://avatars.githubusercontent.com/u/74509058?v=4' alt='user avatar'
+            className='rounded img-thumbnail' />
+          {/* possible modal with option to upload photo goes here */}
+          {/* <br />
+          <br />
+          <form>
+            <div className='form-group'>
+              <label for='uploadPhoto'>Upload Photo</label> 
+              <br/>
+              <input type='file' className='form-control-file' id='uploadPhoto' />
+            </div>
+          </form> */}
 
-        <h2 id='username'>murderclaws56</h2>
-        <h3>Connection ID: <span id='user-id'>763djnf973</span></h3>
-        <h3>Edit your profile.</h3>
-        <form>
-          <div className='form-group custom-text-align'>
-            <label for='inputUsername'>Username</label>
-            <input type='text' className='form-control' id='inputUsername' placeholder='Username' />
-          </div>
-  
-          <div className='form-group custom-text-align'>
-            <label for='inputPassword'>Password</label>
-            <input type='password' className='form-control' id='inputPassword' placeholder='Password' />
-          </div>
-  
-          <div className='form-group custom-text-align'>
-            <label for='confirmPassword'>Confirm Password</label>
-            <input type='password' className='form-control' id='confirmPassword' placeholder='Confirm Password' />
-          </div>
-  
-          <div className='form-group custom-text-align'>
-            <label for='inputEmail'>Email</label>
-            <input type='email' className='form-control' id='inputEmail' placeholder='Email Address' />
-            <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
-          </div>
-  
-          <div className='form-row'>
-            <div className='form-group col-md-6 custom-text-align'>
-              <label for='inputAllergies'>Allergies</label>
-              <input type='text' className='form-control' id='inputAllergies' placeholder='Allergies' />
+
+          <h2 id='username'>murderclaws56</h2>
+          <h3>Connection ID: <span id='user-id'>763djnf973</span></h3>
+          <h4>Edit your profile.</h4>
+          <form className='custom-text-align'>
+            <div className='form-group'>
+              <label for='inputUsername'>Username</label>
+              <input type='text' className='form-control' id='inputUsername' placeholder='Username' />
             </div>
-            <div className='form-group col-md-6 custom-text-align'>
-              <label for='inputHobbies'>Hobbies</label>
-              <input type='text' className='form-control' id='inputHobbies' placeholder='Hobbies' />
+
+            <div className='form-group'>
+              <label for='inputPassword'>Password</label>
+              <input type='password' className='form-control' id='inputPassword' placeholder='Password' />
             </div>
-          </div>
-  
-          <div className='form-row'>
-            <div className='form-group col-md-6 custom-text-align'>
-              <label for='inputFaveFoods'>Favorite Foods</label>
-              <input type='text' className='form-control' id='inputFaveFoods' placeholder='Foods I Like' />
+
+            <div className='form-group'>
+              <label for='confirmPassword'>Confirm Password</label>
+              <input type='password' className='form-control' id='confirmPassword' placeholder='Confirm Password' />
             </div>
-            <div className='form-group col-md-6 custom-text-align'>
-              <label for='inputHateFoods'>Loathed Foods</label>
-              <input type='text' className='form-control' id='inputHateFoods' placeholder='Foods I Dislike' />
+
+            <div className='form-group'>
+              <label for='inputEmail'>Email</label>
+              <input type='email' className='form-control' id='inputEmail' placeholder='Email Address' />
+              <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
             </div>
-          </div>
-  
-          <div className='form-row'>
-            <div className='form-group col-md-6 custom-text-align'>
-              <label for='inputPhobias'>Phobias</label>
-              <input type='text' className='form-control' id='inputPhobias' placeholder='Phobias' />
+
+            <div className='row'>
+              <div className='col'>
+                <label for='allergies'>Allergies</label>
+                <input type='text' className='form-control' id='allergies' placeholder='Allergies' />
+              </div>
+              <div className='col'>
+                <label for='hobbies'>Hobbies</label>
+                <input type='text' className='form-control' id='hobbies' placeholder='Hobbies' />
+              </div>
             </div>
-            <div className='form-group col-md-6 custom-text-align'>
-              <label for='inputBirthday'>Birthday</label>
-              <input type='text' className='form-control' id='inputBirthday' placeholder='Birthday' />
+
+            <div className='row'>
+              <div className='col'>
+                <label for='faveFoods'>Favorite Foods</label>
+                <input type='text' className='form-control' id='faveFoods' placeholder='Foods I Like' />
+              </div>
+              <div className='col'>
+                <label for='hateFoods'>Loathed Foods</label>
+                <input type='text' className='form-control' id='hateFoods' placeholder='Foods I Dislike' />
+              </div>
             </div>
-          </div>
-  
-          {/* Might need to redesign Add Connection Section */}
+
+            <div className='row'>
+              <div className='col'>
+                <label for='phobias'>Phobias</label>
+                <input type='text' className='form-control' id='phobias' placeholder='Phobias' />
+              </div>
+              <div className='col'>
+                <label for='birthday'>Birthday</label>
+                <input type='text' className='form-control'
+                  id='birthday' placeholder='Birthday' />
+              </div>
+            </div>
+          </form>
+          <br />
+          <br />
+
+          <h3 className='text-center'>Edit Connections</h3>
+
           <div className='input-group mb-3'>
-            <input type='text' className='form-control' placeholder='Connection ID' aria-label='Enter Connection ID'
-              aria-describedby='button-addon2' />
+            <input type='text' className='form-control' placeholder='Enter Connection ID' />
             <div className='input-group-append'>
-              <button className='btn btn-outline-secondary' type='button' id='button-addon2'>Add Connection</button>
+              <button className='btn btn-outline-info' type='button'>Add Connection</button>
             </div>
           </div>
-          {/* <div className='input-group mb-3'>
-            <input type='text' className='form-control' placeholder='Connection ID' aria-label='Enter Connection ID'
-              aria-describedby='button-addon2' />
-            <div className='input-group-append'>
-              <button className='btn btn-outline-secondary' type='button' id='button-addon2'>Add Connection</button>
-            </div>
-          </div> */}
-         
+
+          {/* The following list needs to be dynamically rendered for every connection */}
+          <ul className='list-group'>
+            <li className='list-group-item d-flex justify-content-between align-items-center'>
+              <span id='connection-name'>Connection Name 1</span>
+              <button className='btn btn-outline-danger' type='button'>Delete Connection</button>
+            </li>
+          </ul>
+
+          <br />
           <div className='text-center'>
-            <button className='btn btn-info'>Save Changes</button>
-            <button className='btn btn-danger'>Delete Account</button>
+            <button className='btn btn-info btn-margin'>Save Changes</button>
+            <button className='btn btn-danger btn-margin'>Delete Account</button>
           </div>
-      </form>
+
+
+        </div>
       </div>
     </div>
-  </div>
   )
 }
-
-//need to add 'delete connection' option
