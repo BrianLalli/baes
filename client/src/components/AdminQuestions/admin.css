@@ -1,5 +1,12 @@
+ .custom-container {
+  display: flex;
+  line-height: 45px;
+}
+
+
 .edit-profile-container {
-  width: 90%;
+  width: 100%;
+  justify-content: center;
 }
 
 .img-thumbnail {
@@ -7,15 +14,49 @@
   width: 200px;
 }
 
-.img-circle {
-  border-radius: 60%;
-}
-
 .custom-text-align {
   text-align: left;
 }
 
+.btn-info {
+  color: var(--white) !important;
+  background-color: var(--green) !important;
+  border-color: var(--green) !important;
+}
+
+.btn-info:hover {
+  color: var(--white) !important;
+  background-color: #016161 !important;
+  border-color: #016161 !important;
+}
+
+.btn-outline-info {
+  color: var(--green) !important;
+  background-color: transparent;
+  background-image: none;
+  border-color: var(--green) !important;
+}
+
+.btn-outline-info:hover {
+  color: var(--white) !important;
+  background-color: var(--green) !important;
+  border-color: var(--green) !important;
+}
+
+.btn-margin {
+  margin: 10px;
+}
+
+#username {
+  color: var(--blue);
+}
+
 #user-id {
-  color: #273057;
+  color: var(--green);
   font-weight: bolder;
 }
+
+#connection-name {
+  background: transparent;
+  font-weight: bold;
+} 
