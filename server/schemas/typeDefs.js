@@ -14,6 +14,7 @@ const typeDefs = gql`
     phobias: String
     hobbies: String 
     connections: [ User ]
+    notes: [ Notes ]
   }
 
   type Notes {

@@ -67,3 +67,7 @@ export default function Navbar({darkMode, handleClick}) {
         </Box>
     )
 }
+
+
+
+

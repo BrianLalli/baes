@@ -21,12 +21,12 @@ export const QUERY_SINGLE_USER = gql`
       birthday
       phobias
       hobbies
-      
+      connections {
+        username
+      }
     }
   }
 `;
-
-
 
 export const QUERY_ME = gql`
   query me {

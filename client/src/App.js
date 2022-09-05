@@ -11,6 +11,7 @@ import { Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
 import Admin from './pages/Admin';
+import UserProfile from "./components/UserProfile";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -37,6 +38,7 @@ function App() {
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/admin" element={<Admin />} />
+            
           </Routes>
 
           <Grid item>
