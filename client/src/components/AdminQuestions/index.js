@@ -5,6 +5,7 @@ import { ADD_CONNECTION, UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
 
+
 //missing functionality to text boxes
 
 export default function Admin({adminState, setAdminState}) {
@@ -31,7 +32,7 @@ const [updateUser , { error, data }] = useMutation(UPDATE_USER);
       [name]: value,
     });
   }
-  console.log(adminState)
+  console.log(localAdminState)
   };
 
   // const handleConnectionChange = (e) => {
