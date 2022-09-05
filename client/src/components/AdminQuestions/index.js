@@ -12,7 +12,7 @@ export default function Admin() {
   //logic to save state of each input that user submits
   //click save changes -> mutuation to update user 
   return (
-    <div className='container'>
+    <div className='custom-container'>
       <div className='edit-profile-container row'>
         <div className='col-12 col-md-7 text-center'>
           <img src='https://avatars.githubusercontent.com/u/74509058?v=4' alt='user avatar'

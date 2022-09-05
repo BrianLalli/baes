@@ -1,7 +1,8 @@
-.container {
+ .custom-container {
   display: flex;
   line-height: 45px;
 }
+
 
 .edit-profile-container {
   width: 100%;
@@ -58,4 +59,4 @@
 #connection-name {
   background: transparent;
   font-weight: bold;
-}
+} 
