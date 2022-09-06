@@ -13,6 +13,7 @@ import './admin.css';
 export default function Admin({ adminState, setAdminState }) {
 
   const [localAdminState, setLocalAdminState] = useState(adminState);
+  const [connectionState, setConnectionState] = useState('');
 
   useEffect(() => {
     setLocalAdminState(adminState);
@@ -33,22 +34,21 @@ export default function Admin({ adminState, setAdminState }) {
 
     const { name, value } = e.target;
 
-    if (name === "connection") {
-      // handleConnectionChange();
-    } else {
+    if (name === 'connection') {
+      setConnectionState(value);
+    }
     setLocalAdminState({
       ...localAdminState,
       [name]: value,
     });
-  }
-  console.log(localAdminState)
+
+    // console.log(localAdminState)
   };
 
 
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // console.log("just before the mutation")
     try {
       const { data } = await updateUser({
         variables: { ...localAdminState },
@@ -58,22 +58,45 @@ export default function Admin({ adminState, setAdminState }) {
         ...adminState,
         ...localAdminState
       });
-      console.log("adminstate", adminState)
-      console.log("localstate", localAdminState)
+      // console.log("adminstate", adminState)
+      // console.log("localstate", localAdminState)
     } catch (error) {
       console.error(error);
     }
   };
 
-  // const handleAddConnection = async(e) => {
-  //   e.preventDefault();
+  const handleAddConnection = async(e) => {
+    e.preventDefault();
 
-  // }
+    try {
+      // console.log("connection", connectionState);
+      const { data } = await addConnection({
+        variables: {"user": connectionState}
+      })
+      console.log(data);
+      setLocalAdminState({
+        ...localAdminState,
+        connections:data.addConnection.connections
+      })
 
-  // const handleRemoveConnection = async(e) => {
-  //   e.preventDefault();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-  // }
+  const handleRemoveConnection = async(e) => {
+    e.preventDefault();
+   console.log(e.target.value)
+
+    const { data } = await deleteConnection({
+      variables: {"user": e.target.value}
+    }) 
+    
+    setLocalAdminState({
+      ...localAdminState,
+      connections: data.deleteConnection.connections
+    })
+  }
 
 
   // error form
@@ -173,9 +196,9 @@ export default function Admin({ adminState, setAdminState }) {
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username'/>
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username' onChange={handleUserInfoChange}/>
                 <div className='input-group-append'>
-                  <button className='btn btn-outline-info' type='button'>Add Connection</button>
+                  <button className='btn btn-outline-info' type='button' onClick={handleAddConnection}>Add Connection</button>
                 </div>
               </div>
 
@@ -184,7 +207,7 @@ export default function Admin({ adminState, setAdminState }) {
                 {localAdminState.connections?.map((connection) => (
                   <li className='list-group-item d-flex justify-content-between align-items-center'>
                     <span id='connection-name'>{connection.username}</span>
-                    <button className='btn btn-outline-danger' type='button'>Delete Connection</button>
+                    <button className='btn btn-outline-danger' type='button' onClick={handleRemoveConnection} value={connection._id}>Delete Connection</button>
                   </li>
                 ))}
 
