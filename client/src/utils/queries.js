@@ -14,6 +14,16 @@ export const QUERY_SINGLE_USER = gql`
     user(userId: $userId) {
       _id
       username
+      email
+      allergies
+      faveFoods
+      hateFoods
+      birthday
+      phobias
+      hobbies
+      connections {
+        username
+      }
     }
   }
 `;
@@ -22,8 +32,25 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
+      name
+      notes {
+        content
+        date
+      }
       username
       connections
+
+    }
+  }
+`;
+
+export const QUERY_NOTES = gql`
+  query getNotes {
+    notes {
+      _id
+      title
+      content
+      date
     }
   }
 `;

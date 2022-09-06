@@ -46,7 +46,6 @@ export default function Navbar({ handleClick }) {
       ? "home"
       : location.pathname.slice(1, location.pathname.length)
   );
-
   return (
     <Box component={"nav"} width={"100%"}>
       {/* <Box 

@@ -3,17 +3,17 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink,
 } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/index";
 import Style from "./App.module.scss";
 import { Box as Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
 import Admin from './pages/Admin';
+import UserProfile from "./components/UserProfile";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,6 +39,7 @@ const client = new ApolloClient({
 
 
 function App() {
+
 
   const [userState, setUserState] = useState ({
     username: '',
@@ -83,6 +84,7 @@ function App() {
             adminState={userState}
             setAdminState={setUserState}/>} 
             />
+            <Route path="/profile/:userId" element={<Profile />} />
           </Routes>
           <Grid item>
             <Box
@@ -100,10 +102,9 @@ function App() {
               </p>
             </Box>
           </Grid>
-          {/* </div> */}
         </Router>
       </ApolloProvider>
-    </Box>
+    // </Box>
   );
 }
 
