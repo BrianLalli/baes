@@ -3,24 +3,17 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink,
 } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-// import Style from './MainLayout.module.scss'
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
-<<<<<<< Updated upstream
 import Navbar from "./components/Navbar/index";
-import { useMutation } from '@apollo/client';
-=======
-import Navbar from "./components/Navbar";
->>>>>>> Stashed changes
-// import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
 import { Box as Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
 import Admin from './pages/Admin';
+import UserProfile from "./components/UserProfile";
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -47,6 +40,7 @@ const client = new ApolloClient({
 
 function App() {
 
+
   const [userState, setUserState] = useState ({
     username: '',
     email: '',
@@ -61,42 +55,26 @@ function App() {
   })
 
 
-  const [darkMode, setDarkMode] = useState(true);
-  const handleClick = () => setDarkMode(!darkMode);
+  // const [darkMode, setDarkMode] = useState(true);
+  // const handleClick = () => setDarkMode(!darkMode);
 
   return (
-    <Box className={darkMode ? Style.dark : Style.light}>
+    <Box >
       <ApolloProvider client={client}>
         {/* Wrap page elements in Router component to keep track of location state */}
         <Router>
-          {/* <Grid
-            container
-
-            display={'flex'}
-            flexDirection={'column'}
-            minHeight={'100vh'}
-            justifyContent={'space-between'}
-          ></Grid> */}
-          {/* <Grid item> */}
-
-            <Navbar darkMode={darkMode} handleClick={handleClick} />
-          {/* </Grid>{" "} */}
-          {/* <div className="flex-column justify-flex-start min-100-vh"> */}
-          {/* <Header />
-          <div className="container"> */}
+            <Navbar
+            />
           {/* Wrap Route elements in a Routes component */}
           <Routes>
             {/* Define routes using the Route component to render different page components at different paths */}
-            {/* Define a default route that will render the Home component */}
             <Route path="/" element={<GetStarted />} />
-            {/* Define a route that will take in variable data */}
             <Route path="/login" element={<Login 
             signupState={userState} 
             loginState={userState}
             setSignupState={setUserState}
             setLoginState={setUserState}/>} 
             />
-            {/* Define a route that will take in variable data */}
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile 
             userState={userState}
@@ -106,9 +84,8 @@ function App() {
             adminState={userState}
             setAdminState={setUserState}/>} 
             />
+            <Route path="/profile/:userId" element={<Profile />} />
           </Routes>
-          {/* </div>
-          {/* <Footer /> */}
           <Grid item>
             <Box
               component={"footer"}
@@ -125,10 +102,9 @@ function App() {
               </p>
             </Box>
           </Grid>
-          {/* </div> */}
         </Router>
       </ApolloProvider>
-    </Box>
+    // </Box>
   );
 }
 
