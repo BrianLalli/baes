@@ -3,6 +3,8 @@ import Style from "../Navbar/Navbar.module.scss";
 import Toggler from "../Toggler/Toggler";
 import { Link, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
+import Auth from '../../utils/auth'
+import Logout from '../Logout';
 
 const links = [
   {
@@ -93,6 +95,11 @@ export default function Navbar({ handleClick }) {
             </Link>
           </Box>
         ))}
+        {Auth.loggedIn() ? (
+          <Logout/>
+        ) : (
+          <p>not logged in</p>
+        )}
       </Box>
     </Box>
   );
