@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+
 import { Link } from 'react-router-dom';
 import { ADD_CONNECTION, UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
@@ -10,14 +11,14 @@ import './admin.css';
 
 export default function Admin({adminState, setAdminState}) {
 
-  const [localAdminState, setLocalAdminState] = useState(adminState)
+  const [localAdminState, setLocalAdminState] = useState({})
 
  //mutation to fetch data
  //add logic to populate form fields
  //logic to save state of each input that user submits
  //click save changes -> mutuation to update user 
 
-const [updateUser , { error, data }] = useMutation(UPDATE_USER);
+  const [updateUser , { error, data }] = useMutation(UPDATE_USER);
 // const [addConnection, { error, data }] = useMutation(ADD_CONNECTION);
 
   // update state based on form input changes
@@ -42,17 +43,20 @@ const [updateUser , { error, data }] = useMutation(UPDATE_USER);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+    // console.log("just before the mutation")
     try {
-      const {data} = await updateUser({
-        variables: { localAdminState },
+      const { data } = await updateUser({
+        variables: { ...localAdminState },
       });
-    
-      setAdminState({localAdminState});
+
+      setAdminState({
+        ...adminState,
+        ...localAdminState
+      });
       console.log("adminstate", adminState)
       console.log("localstate", localAdminState)
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -141,14 +145,19 @@ const [updateUser , { error, data }] = useMutation(UPDATE_USER);
                       id='birthday' placeholder='Birthday' />
                   </div>
                 </div>
-              </form>
               <br />
+
+              <div className='text-center'>
+                <button className='btn btn-info btn-margin' type='submit'>Save Changes</button>
+                <button className='btn btn-danger btn-margin'>Delete Account</button>
+              </div>
+              </form>
               <br />
 
               <h3 className='text-center'>Edit Connections</h3>
 
               <div className='input-group mb-3'>
-                <input onChange={handleUserInfoChange} name='connection' type='text' className='form-control' placeholder='Enter Connection ID' />
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' />
                 <div className='input-group-append'>
                   <button className='btn btn-outline-info' type='button'>Add Connection</button>
                 </div>
@@ -163,10 +172,6 @@ const [updateUser , { error, data }] = useMutation(UPDATE_USER);
               </ul>
 
               <br />
-              <div className='text-center'>
-                <button className='btn btn-info btn-margin'>Save Changes</button>
-                <button className='btn btn-danger btn-margin'>Delete Account</button>
-              </div>
 
 
             </div>

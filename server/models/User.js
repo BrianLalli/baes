@@ -26,6 +26,11 @@ const userSchema = new Schema({
     required: false,
     trim: true,
   },
+  hobbies: 
+  {
+    type: String,
+     trim: true,
+  },
   faveFoods: 
   {
     type: String,
@@ -38,21 +43,16 @@ const userSchema = new Schema({
     required: false,
      trim: true,
   },
-  birthday: 
-  {
-    type: Date,
-    trim: true,
-    required: false,
-  },
   phobias: 
   {
     type: String,
      trim: true,
   },
-  hobbies: 
+  birthday: 
   {
-    type: String,
-     trim: true,
+    type: Date,
+    trim: true,
+    required: false,
   },
   //arrays of other users
   //still need to double check connections and notes 

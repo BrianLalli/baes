@@ -25,7 +25,7 @@ export default function Login ({loginState, setLoginState}) {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(loginState);
+    // console.log(loginState);
     try {
       const { data } = await login({
         variables: { ...loginState },
@@ -35,12 +35,6 @@ export default function Login ({loginState, setLoginState}) {
     } catch (e) {
       console.error(e);
     }
-
-    // clear form values
-    // setLoginState({
-    //   email: '',
-    //   password: '',
-    // });
   };
 
   // error form

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink,
 } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
+import { useQuery } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // import Style from './MainLayout.module.scss'
@@ -9,14 +10,15 @@ import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
-import Navbar from "./components/Navbar/index";
-import { useMutation } from '@apollo/client';
+import Navbar from "./components/Navbar";
+import Admin from './pages/Admin';
+// import { useMutation } from '@apollo/client';
 // import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
 import { Box as Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
-import Admin from './pages/Admin';
+import { QUERY_ME } from './utils/queries';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -43,6 +45,7 @@ const client = new ApolloClient({
 
 function App() {
 
+
   const [userState, setUserState] = useState ({
     username: '',
     email: '',
@@ -56,13 +59,21 @@ function App() {
     connections: [],
   })
 
+  //query me data is currentstate with useEffect
+  // const { loading, data } = useQuery(QUERY_ME);
+  // setUserState({data});
 
-  const [darkMode, setDarkMode] = useState(true);
-  const handleClick = () => setDarkMode(!darkMode);
+  // const { loading, data } = useQuery(QUERY_ME);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     setUserState(data);
+  //   }
+  // })
 
   return (
-    <Box className={darkMode ? Style.dark : Style.light}>
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <Box>
         {/* Wrap page elements in Router component to keep track of location state */}
         <Router>
           {/* <Grid
@@ -75,7 +86,7 @@ function App() {
           ></Grid> */}
           {/* <Grid item> */}
 
-            <Navbar darkMode={darkMode} handleClick={handleClick} />
+            <Navbar/>
           {/* </Grid>{" "} */}
           {/* <div className="flex-column justify-flex-start min-100-vh"> */}
           {/* <Header />
@@ -115,16 +126,18 @@ function App() {
               sx={{ opacity: 0.7 }}
               width={"100%"}
             >
-              <p>
-                Lovers Not Fighters &copy; 2022
-                <a href={"https://github.com/BrianLalli/baes"}></a>
-              </p>
+              <a href={"https://github.com/BrianLalli/baes"} className="github-link">
+                <p>
+                  Lovers Not Fighters &copy; 2022
+                </p>
+              </a>
             </Box>
           </Grid>
           {/* </div> */}
         </Router>
+        </Box>
       </ApolloProvider>
-    </Box>
+
   );
 }
 

@@ -23,6 +23,14 @@ export const QUERY_ME = gql`
     me {
       _id
       username
+      email
+      password
+      allergies
+      hobbies
+      faveFoods
+      hateFoods
+      phobias
+      birthday
       connections
     }
   }

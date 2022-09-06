@@ -35,7 +35,9 @@ a:hover,
 a:visited,
 a:active {
     text-decoration: none;
+    color: var(--blue);
 }
+
 
 img {
     max-width: 100%;
