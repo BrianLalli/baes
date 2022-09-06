@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { Link } from 'react-router-dom';
-import { ADD_CONNECTION, UPDATE_USER } from '../../utils/mutations';
+import { ADD_CONNECTION, DELETE_CONNECTION, UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
 // import { QUERY_ME } from '../../utils/queries'
@@ -23,15 +23,18 @@ export default function Admin({ adminState, setAdminState }) {
   //logic to save state of each input that user submits
   //click save changes -> mutuation to update user 
 
-  const [updateUser , { error, data }] = useMutation(UPDATE_USER);
-// const [addConnection, { error, data }] = useMutation(ADD_CONNECTION);
+  const [updateUser , { error: userError, data: userData }] = useMutation(UPDATE_USER);
+  const [addConnection, { error: addError, data: addData }] = useMutation(ADD_CONNECTION); 
+  const [deleteConnection, { error: deleteError, data: removeData }] = useMutation(DELETE_CONNECTION); 
 
   // update state based on form input changes
   const handleUserInfoChange = (e) => {
+    e.preventDefault();
+
     const { name, value } = e.target;
 
     if (name === "connection") {
-      //do something else
+      // handleConnectionChange();
     } else {
     setLocalAdminState({
       ...localAdminState,
@@ -41,9 +44,6 @@ export default function Admin({ adminState, setAdminState }) {
   console.log(localAdminState)
   };
 
-  // const handleConnectionChange = (e) => {
-
-  // }
 
 
   const handleFormSubmit = async (e) => {
@@ -64,6 +64,17 @@ export default function Admin({ adminState, setAdminState }) {
       console.error(error);
     }
   };
+
+  // const handleAddConnection = async(e) => {
+  //   e.preventDefault();
+
+  // }
+
+  // const handleRemoveConnection = async(e) => {
+  //   e.preventDefault();
+
+  // }
+
 
   // error form
   const handleErrorSubmit = async (e) => {
@@ -162,7 +173,7 @@ export default function Admin({ adminState, setAdminState }) {
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' />
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username'/>
                 <div className='input-group-append'>
                   <button className='btn btn-outline-info' type='button'>Add Connection</button>
                 </div>
@@ -170,10 +181,13 @@ export default function Admin({ adminState, setAdminState }) {
 
               {/* The following list needs to be dynamically rendered for every connection */}
               <ul className='list-group'>
-                <li className='list-group-item d-flex justify-content-between align-items-center'>
-                  <span id='connection-name'>Connection Name 1</span>
-                  <button className='btn btn-outline-danger' type='button'>Delete Connection</button>
-                </li>
+                {localAdminState.connections?.map((connection) => (
+                  <li className='list-group-item d-flex justify-content-between align-items-center'>
+                    <span id='connection-name'>{connection.username}</span>
+                    <button className='btn btn-outline-danger' type='button'>Delete Connection</button>
+                  </li>
+                ))}
+
               </ul>
 
               <br />
