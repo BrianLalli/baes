@@ -42,8 +42,8 @@ const resolvers = {
     },
     
     
-    addUser: async (parent, {username, email, password}) => {
-      const user = await User.create({username, email, password });
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
@@ -52,7 +52,6 @@ const resolvers = {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
       }
-
       throw new AuthenticationError('Not logged in');
     },
 
@@ -74,7 +73,9 @@ const resolvers = {
             new: true,
             runValidators: true,
           }
-        );
+        )
+        .populate('connections')
+        //.populate or something
       }
     },
 

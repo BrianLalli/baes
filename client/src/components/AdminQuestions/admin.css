@@ -1,4 +1,4 @@
- .custom-container {
+.custom-container {
   display: flex;
   line-height: 45px;
 }
@@ -9,9 +9,10 @@
   justify-content: center;
 }
 
-.img-thumbnail {
+.custom-img-thumbnail {
   height: 200px;
   width: 200px;
+  border-radius: 50%;
 }
 
 .custom-text-align {
@@ -48,13 +49,10 @@
 }
 
 #username {
-  color: var(--blue);
-}
-
-#user-id {
   color: var(--green);
   font-weight: bolder;
 }
+
 
 #connection-name {
   background: transparent;

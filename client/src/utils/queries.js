@@ -14,24 +14,56 @@ export const QUERY_SINGLE_USER = gql`
     user(userId: $userId) {
       _id
       username
+      email
+      allergies
+      faveFoods
+      hateFoods
+      birthday
+      phobias
+      hobbies
+      connections {
+        username
+      }
     }
   }
 `;
 
 export const QUERY_ME = gql`
-  query me {
-    me {
+query Query {
+  me {
+    _id
+    username
+    password
+    email
+    allergies
+    hobbies
+    faveFoods
+    hateFoods
+    phobias
+    birthday
+    connections {
       _id
       username
-      email
       password
+      email
       allergies
       hobbies
       faveFoods
       hateFoods
       phobias
       birthday
-      connections
+    }
+  }
+}
+`;
+
+export const QUERY_NOTES = gql`
+  query getNotes {
+    notes {
+      _id
+      title
+      content
+      date
     }
   }
 `;

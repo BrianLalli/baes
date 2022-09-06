@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { Link } from 'react-router-dom';
 import { ADD_CONNECTION, UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
+// import { QUERY_ME } from '../../utils/queries'
 
 
 //missing functionality to text boxes
 
-export default function Admin({adminState, setAdminState}) {
+export default function Admin({ adminState, setAdminState }) {
 
-  const [localAdminState, setLocalAdminState] = useState({})
+  const [localAdminState, setLocalAdminState] = useState(adminState);
 
- //mutation to fetch data
- //add logic to populate form fields
- //logic to save state of each input that user submits
- //click save changes -> mutuation to update user 
+  useEffect(() => {
+    setLocalAdminState(adminState);
+  }, [adminState]);
+
+  //mutation to fetch data
+  //add logic to populate form fields
+  //logic to save state of each input that user submits
+  //click save changes -> mutuation to update user 
 
   const [updateUser , { error, data }] = useMutation(UPDATE_USER);
 // const [addConnection, { error, data }] = useMutation(ADD_CONNECTION);
@@ -24,7 +29,7 @@ export default function Admin({adminState, setAdminState}) {
   // update state based on form input changes
   const handleUserInfoChange = (e) => {
     const { name, value } = e.target;
-    
+
     if (name === "connection") {
       //do something else
     } else {
@@ -66,7 +71,6 @@ export default function Admin({adminState, setAdminState}) {
 
   }
 
-  
   return (
     <div>
       {Auth.loggedIn() ? (
@@ -74,7 +78,7 @@ export default function Admin({adminState, setAdminState}) {
           <div className='edit-profile-container row'>
             <div className='col-12 col-md-7 text-center'>
               <img src='https://avatars.githubusercontent.com/u/74509058?v=4' alt='user avatar'
-                className='rounded img-thumbnail' />
+                className='custom-img-thumbnail' />
               {/* possible modal with option to upload photo goes here */}
               {/* <br />
               <br />
@@ -87,62 +91,63 @@ export default function Admin({adminState, setAdminState}) {
               </form> */}
 
 
-              <h2 id='username'>murderclaws56</h2>
-              <h3>Connection ID: <span id='user-id'>763djnf973</span></h3>
-              <h4>Edit your profile.</h4>
+              <h2 id='username'>{localAdminState.username}</h2>
+              <h4>Edit account information.</h4>
               <form className='custom-text-align' onSubmit={handleFormSubmit}>
                 <div className='form-group'>
-                  <label htmlFor='inputUsername'>Username</label>
-                  <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='Username' />
+                  <label htmlFor='inputUsername'>Update Username</label>
+                  <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='username' value={localAdminState.username} />
                 </div>
 
-                <div className='form-group'>
-                  <label htmlFor='inputPassword'>Password</label>
-                  <input onChange={handleUserInfoChange} name='password' type='password' className='form-control' id='inputPassword' placeholder='Password' />
+                {/* <div className='form-group'>
+                  <label htmlFor='inputPassword'>Update Password</label>
+                  <input onChange={handleUserInfoChange} name='password' type='password' className='form-control' id='inputPassword' placeholder='******' />
                 </div>
 
                 <div className='form-group'>
                   <label htmlFor='confirmPassword'>Confirm Password</label>
-                  <input onChange={handleUserInfoChange} name='confirm-password' type='password' className='form-control' id='confirmPassword' placeholder='Confirm Password' />
-                </div>
+                  <input onChange={handleUserInfoChange} name='confirm-password' type='password' className='form-control' id='confirmPassword' placeholder='********' />
+                </div> */}
 
                 <div className='form-group'>
-                  <label htmlFor='inputEmail'>Email</label>
-                  <input onChange={handleUserInfoChange} name='email' type='email' className='form-control' id='inputEmail' placeholder='Email Address' />
+                  <label htmlFor='inputEmail'>Update Email</label>
+                  <input onChange={handleUserInfoChange} name='email' type='email' className='form-control' id='inputEmail' placeholder='whiskers@yahoo.com' value={localAdminState.email}/>
                   <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
                 </div>
+                <br />
+                <h4 className='text-center'>Optional fields to add to your profile.</h4>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='allergies'>Allergies</label>
-                    <input onChange={handleUserInfoChange} name='allergies' type='text' className='form-control' id='allergies' placeholder='Allergies' />
+                    <input onChange={handleUserInfoChange} name='allergies' type='text' className='form-control' id='allergies' placeholder='Allergies' value={localAdminState.allergies}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='hobbies'>Hobbies</label>
-                    <input onChange={handleUserInfoChange} name='hobbies' type='text' className='form-control' id='hobbies' placeholder='Hobbies' />
+                    <input onChange={handleUserInfoChange} name='hobbies' type='text' className='form-control' id='hobbies' placeholder='Hobbies' value={localAdminState.hobbies}/>
                   </div>
                 </div>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='faveFoods'>Favorite Foods</label>
-                    <input onChange={handleUserInfoChange} name='faveFoods' type='text' className='form-control' id='faveFoods' placeholder='Foods I Like' />
+                    <input onChange={handleUserInfoChange} name='faveFoods' type='text' className='form-control' id='faveFoods' placeholder='Foods I Like' value={localAdminState.faveFoods}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='hateFoods'>Loathed Foods</label>
-                    <input onChange={handleUserInfoChange} name='hateFoods' type='text' className='form-control' id='hateFoods' placeholder='Foods I Dislike' />
+                    <input onChange={handleUserInfoChange} name='hateFoods' type='text' className='form-control' id='hateFoods' placeholder='Foods I Dislike' value={localAdminState.hateFoods}/>
                   </div>
                 </div>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='phobias'>Phobias</label>
-                    <input onChange={handleUserInfoChange} name='phobias' type='text' className='form-control' id='phobias' placeholder='Phobias' />
+                    <input onChange={handleUserInfoChange} name='phobias' type='text' className='form-control' id='phobias' placeholder='Phobias' value={localAdminState.phobias}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='birthday'>Birthday</label>
                     <input onChange={handleUserInfoChange} name='birthday' type='text' className='form-control'
-                      id='birthday' placeholder='Birthday' />
+                      id='birthday' placeholder='Birthday' value={localAdminState.birthday}/>
                   </div>
                 </div>
               <br />
@@ -154,7 +159,7 @@ export default function Admin({adminState, setAdminState}) {
               </form>
               <br />
 
-              <h3 className='text-center'>Edit Connections</h3>
+              <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
                 <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' />
@@ -177,12 +182,12 @@ export default function Admin({adminState, setAdminState}) {
             </div>
           </div>
         </div>
-    ) : (
-      <p>
-        You need to be logged in to edit your profile. Please{' '}
-        <Link to="/login">login or signup.</Link>
-      </p>
-    )}
+      ) : (
+        <p>
+          You need to be logged in to edit your profile. Please{' '}
+          <Link to="/login">login or signup.</Link>
+        </p>
+      )}
     </div>
   )
 }

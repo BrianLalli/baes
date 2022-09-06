@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Neucha&family=Kaushan+Script');
+
 * {
   background-color: #f4f1f5;
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Neucha', cursive !important;
+  color: #273057;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

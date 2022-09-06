@@ -14,6 +14,7 @@ const typeDefs = gql`
     phobias: String
     birthday: String
     connections: [ User ]
+    notes: [ Notes ]
   }
 
   type Notes {
@@ -44,7 +45,14 @@ const typeDefs = gql`
     addUser(
       username: String!
       email: String!
-      password: String!): Auth
+      password: String!
+      allergies: String
+      faveFoods: String
+      hateFoods: String
+      birthday: String
+      phobias: String
+      hobbies: String 
+      ): Auth
 
    
     updateUser(
@@ -58,15 +66,13 @@ const typeDefs = gql`
       birthday: String
       ): User
 
-
     deleteUser(
       user: ID!
     ): User
 
-
     addConnection(
       user: ID!
-    ): Auth
+    ): User
 
     deleteConnection(
       user: ID!
@@ -77,7 +83,6 @@ const typeDefs = gql`
       note: String
     ): User
   
-    
     updateNote(
       userId: ID!
       title: String
