@@ -29,19 +29,32 @@ export const QUERY_SINGLE_USER = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me {
-    me {
+query Query {
+  me {
+    _id
+    username
+    password
+    email
+    allergies
+    hobbies
+    faveFoods
+    hateFoods
+    phobias
+    birthday
+    connections {
       _id
-      name
-      notes {
-        content
-        date
-      }
       username
-      connections
-
+      password
+      email
+      allergies
+      hobbies
+      faveFoods
+      hateFoods
+      phobias
+      birthday
     }
   }
+}
 `;
 
 export const QUERY_NOTES = gql`

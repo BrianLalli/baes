@@ -3,15 +3,16 @@ const { GraphQLScalarType, Kind } = require('graphql');
 
 const typeDefs = gql`
   type User {
-    _id: ID
+    _id: ID!
     username: String
+    password: String
     email: String
     allergies: String
+    hobbies: String 
     faveFoods: String
     hateFoods: String
-    birthday: String
     phobias: String
-    hobbies: String 
+    birthday: String
     connections: [ User ]
     notes: [ Notes ]
   }
@@ -28,7 +29,6 @@ const typeDefs = gql`
     user: User
   }
 
-
   type Query {
     users: [User]!
     user(userId: ID!): User
@@ -36,11 +36,12 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    
     login(
       email: String!
       password: String!): Auth
     
-    
+
     addUser(
       username: String!
       email: String!
@@ -55,31 +56,23 @@ const typeDefs = gql`
 
    
     updateUser(
-      user: ID!
-    ): User
+      username: String, 
+      email: String
+      allergies: String
+      hobbies: String 
+      faveFoods: String
+      hateFoods: String
+      phobias: String
+      birthday: String
+      ): User
 
     deleteUser(
       user: ID!
     ): User
 
-
     addConnection(
       user: ID!
-      username: String!
-      email: String!
-      allergies: String
-      faveFoods: String
-      hateFoods: String
-      birthday: String
-      phobias: String
-      hobbies: String
     ): User
-
-    // addConnection(
-    //   user: ID!
-    // ): User
-
-    
 
     deleteConnection(
       user: ID!
@@ -90,7 +83,6 @@ const typeDefs = gql`
       note: String
     ): User
   
-    
     updateNote(
       userId: ID!
       title: String
