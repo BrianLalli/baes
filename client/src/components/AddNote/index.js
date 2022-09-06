@@ -9,7 +9,7 @@ import './addNote.css'
 const AddNote = () => {
   const [noteContent, setNoteContent] = useState('');
 
-  const [characterCount, setCharacterCount] = useState(0);
+  // const [characterCount, setCharacterCount] = useState(0);
 
   const [addNote, { error }] = useMutation(ADD_NOTE, {
     update(cache, { data: { addNote } }) {
@@ -56,40 +56,40 @@ const AddNote = () => {
 
     if (name === 'noteContent' && value.length <= 280) {
       setNoteContent(value);
-      setCharacterCount(value.length);
+      // setCharacterCount(value.length);
     }
   };
 
   return (
     <div className ='container mt-5' id='addNote'>
-      <h3>Add a Note about your Connection</h3>
+      <div className='row justify-content-md-center'>
+      <h3 className='col-12 col-lg-9'>Add a Note about your Connection</h3>
 
       {Auth.loggedIn() ? (
         <>
-          <p
+          {/* <p
             className={`m-0 ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
             Character Count: {characterCount}/280
-          </p>
+          </p> */}
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="col-12 col-lg-9" 
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            
               <textarea
                 name="noteContent"
                 placeholder="Add a note..."
                 value={noteContent}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
+                className="form-input col-12"
+                // style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
-            </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="btn btn-info btn-block py-3" type="submit">
                 Add Note
               </button>
             </div>
@@ -106,6 +106,7 @@ const AddNote = () => {
           <Link to="/login">login</Link> or 
         </p>
       )}
+    </div>
     </div>
   );
 };

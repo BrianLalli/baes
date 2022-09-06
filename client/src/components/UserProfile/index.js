@@ -40,10 +40,13 @@ export default function UserProfile(){
         <strong className='strong-header m-2'>{user.username}'s Profile</strong>
       </h4>
     
-      <div className="card-body row justify-content-md-center custom-card-body">
-        <ul className="list-group list-group-flush col-12 col-lg-9 custom-ul">
-          <li className="list-group-item">User ID: {user._id}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Email: </strong>{user.email}</li>
+      {/* <div className="card-body custom-card-body col-12 col-lg-9"> */}
+        <ul className="list-group list-group-flush col-12 col-lg-9 custom-ul p-0">
+          <li className="list-group-item "><strong className='strong-list-item'>User ID: </strong> {user._id}</li>
+          <li className="list-group-item">
+            <strong className='strong-list-item'>Email: </strong>
+            {user.email}
+          </li>
           <li className="list-group-item"><strong className='strong-list-item'>Allergies: </strong>{user.allergies}</li>
           <li className="list-group-item"><strong className='strong-list-item'>Favorite Foods: </strong>{user.faveFoods}</li>
           <li className="list-group-item"><strong className='strong-list-item'>Disliked Foods: </strong>{user.hateFoods}</li>
@@ -52,7 +55,7 @@ export default function UserProfile(){
           <li className="list-group-item"><strong className='strong-list-item'>Hobbies: </strong>{user.hobbies}</li>
           <li className="list-group-item"><strong className='strong-list-item'>Connections: </strong>{user.connections}</li>
         </ul>
-      </div>
+      {/* </div> */}
 
   </div>
   </div>
