@@ -58,6 +58,7 @@ export default function Admin({ adminState, setAdminState }) {
         ...adminState,
         ...localAdminState
       });
+      window.location.reload();
       // console.log("adminstate", adminState)
       // console.log("localstate", localAdminState)
     } catch (error) {
