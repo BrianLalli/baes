@@ -58,33 +58,27 @@ export const DELETE_USER = gql`
 
 //add connection
 export const ADD_CONNECTION = gql`
-  mutation addConnection($id: ID!) {
-    addConnection(_id: $id) {
-      user {
-        _id
-        username
-        connections {
-          username
-        }
-      }
+mutation AddConnection($user: ID!) {
+  addConnection(user: $user) {
+    username
+    connections {
+      username
     }
   }
+}
 `;
 
 
 // //delete connection
 export const DELETE_CONNECTION = gql`
-  mutation deleteConnection($id: ID!) {
-    deleteConnection(_id: $id) {
-      user {
-        _id
-        username
-        connections {
-          username
-        }
-      }
+mutation DeleteConnection($user: ID!) {
+  deleteConnection(user: $user) {
+    _id
+    connections {
+      _id
     }
   }
+}
 `;
 
 
