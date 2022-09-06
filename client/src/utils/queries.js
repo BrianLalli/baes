@@ -37,6 +37,9 @@ export const QUERY_ME = gql`
         content
         date
       }
+      username
+      connections
+
     }
   }
 `;

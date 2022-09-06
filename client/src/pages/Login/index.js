@@ -6,12 +6,12 @@ import './Login.css';
 // import Auth from '../utils/auth';
 // import { GoogleLogin } from 'react-google-login'????????;
 
-export default function LoginSignup () {
+export default function LoginSignup ({setLoginState, loginState, setSignupState, signupState}) {
 
   return (
     <div className="login-signup-container">
-      <Login/>
-      <Signup/>
+      <Login setLoginState={setLoginState} loginState={loginState}/>
+      <Signup setSignupState={setSignupState} signupState={signupState} />
     </div>
   )
 };

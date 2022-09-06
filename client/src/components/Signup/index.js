@@ -7,12 +7,7 @@ import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const Signup = () => {
-  const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+const Signup = ({signupState, setSignupState}) => {
 
   const [addProfile, { error, data }] = useMutation(ADD_USER);
 
@@ -20,8 +15,8 @@ const Signup = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
+    setSignupState({
+      ...signupState,
       [name]: value,
     });
   };
@@ -29,17 +24,17 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addProfile({
-        variables: { ...formState },
+        variables: { ...signupState },
       });
 
-      Auth.login(data.addUser.token);
+      Auth.signup(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
+    console.log(signupState)
   };
 
   return (
@@ -51,7 +46,7 @@ const Signup = () => {
 
       <div className="signup-form-container">
         {data ? (
-            <Link to="/home"></Link>
+            <Link to="/admin"></Link>
         ) : (
           <form onSubmit={handleFormSubmit}>
             <input
@@ -59,7 +54,6 @@ const Signup = () => {
               placeholder="username"
               name="username"
               type="text"
-              value={formState.username}
               onChange={handleChange}
             />
             <input
@@ -67,7 +61,6 @@ const Signup = () => {
               placeholder="email"
               name="email"
               type="email"
-              value={formState.email}
               onChange={handleChange}
             />
             <input
@@ -75,7 +68,6 @@ const Signup = () => {
               placeholder="password"
               name="password"
               type="password"
-              value={formState.password}
               onChange={handleChange}
             />
             <div className="submit-signup">

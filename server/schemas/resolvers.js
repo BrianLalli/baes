@@ -1,5 +1,7 @@
 const { signToken } = require('../utils/auth');
 const { User } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+
 
 const resolvers = {
   Query: {
@@ -10,12 +12,15 @@ const resolvers = {
     user: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
     },
-    // me: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id });
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const meData = await User.findOne({ _id: context.user._id })
+        .select('-__v -password')
+        .populate('connections');
+        return meData;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -37,17 +42,27 @@ const resolvers = {
     },
     
     
-    addUser: async (parent, {username, email, password}) => {
-      const user = await User.create({username, email, password });
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
 
+<<<<<<< Updated upstream
     updateUser: async(parent, args, context) => {
+      // console.log("context.user", context.user);
+      // console.log("args", args);
       if(context.user) {
         return User.findOneAndUpdate({_id: args.user._id},args.user,{new: true}
-        )
+        ) 
       }
+=======
+    updateUser: async(parent, args) => {
+      // if(context.user) {
+        return User.findOneAndUpdate({_id: args.user._id},args.user,{new: true}
+        )
+      // }
+>>>>>>> Stashed changes
     },
 
     deleteUser: async(parent, args, context) => {
@@ -128,9 +143,6 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
    
-    
-    //addconnection
-    //removeconnection
     //addbirthday
   }};
 

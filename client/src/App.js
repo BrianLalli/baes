@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink,
+} from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
@@ -7,41 +9,84 @@ import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
 import Navbar from "./components/Navbar/index";
 import Style from "./App.module.scss";
-import { Box, Grid } from "@mui/material";
+import { Box as Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
 // import {Box, Grid} from "@mui/material";
 import Admin from './pages/Admin';
 import UserProfile from "./components/UserProfile";
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+
 const client = new ApolloClient({
-  uri: "/graphql",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
+
 function App() {
+
+
+  const [userState, setUserState] = useState ({
+    username: '',
+    email: '',
+    password: '',
+    allergies: '',
+    faveFoods: '',
+    hateFoods: '',
+    birthday: '',
+    phobias: '',
+    hobbies: '',
+    connections: [],
+  })
+
+
   // const [darkMode, setDarkMode] = useState(true);
   // const handleClick = () => setDarkMode(!darkMode);
+
   return (
-    // <Box className={darkMode ? Style.dark : Style.light}>
+    <Box >
       <ApolloProvider client={client}>
         {/* Wrap page elements in Router component to keep track of location state */}
         <Router>
-            <Navbar  />
+            <Navbar
+            />
           {/* Wrap Route elements in a Routes component */}
           <Routes>
             {/* Define routes using the Route component to render different page components at different paths */}
-            {/* Define a default route that will render the Home component */}
             <Route path="/" element={<GetStarted />} />
-            {/* Define a route that will take in variable data */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login 
+            signupState={userState} 
+            loginState={userState}
+            setSignupState={setUserState}
+            setLoginState={setUserState}/>} 
+            />
             <Route path="/home" element={<Home />} />
-            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route path="/profile" element={<Profile 
+            userState={userState}
+            setUserState={setUserState}/>}
+            />
+            <Route path="/admin" element={<Admin             
+            adminState={userState}
+            setAdminState={setUserState}/>} 
+            />
             <Route path="/profile/:userId" element={<Profile />} />
-            <Route path="/admin" element={<Admin />} />
-            
           </Routes>
-
-          <Grid item >
+          <Grid item>
             <Box
               component={"footer"}
               display={"flex"}
