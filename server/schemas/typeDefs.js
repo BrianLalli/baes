@@ -65,7 +65,21 @@ const typeDefs = gql`
 
     addConnection(
       user: ID!
-    ): Auth
+      username: String!
+      email: String!
+      allergies: String
+      faveFoods: String
+      hateFoods: String
+      birthday: String
+      phobias: String
+      hobbies: String
+    ): User
+
+    // addConnection(
+    //   user: ID!
+    // ): User
+
+    
 
     deleteConnection(
       user: ID!
