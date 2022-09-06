@@ -15,7 +15,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         const meData = await User.findOne({ _id: context.user._id })
-        .select('-__v -password')
+        .select('-__v -password') 
         .populate('connections');
         return meData;
       }
@@ -48,14 +48,11 @@ const resolvers = {
       return { token, user };
     },
 
-    updateUser: async(parent, args, context) => {
-      // console.log("context.user", context.user);
-      // console.log("args", args);
-      if(context.user) {
-        return User.findOneAndUpdate({_id: args.user._id},args.user,{new: true}
-        ) 
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, { new: true });
       }
-
+      throw new AuthenticationError('Not logged in');
     },
 
     deleteUser: async(parent, args, context) => {
@@ -76,7 +73,9 @@ const resolvers = {
             new: true,
             runValidators: true,
           }
-        );
+        )
+        .populate('connections')
+        //.populate or something
       }
     },
 

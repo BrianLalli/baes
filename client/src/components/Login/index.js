@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -14,6 +14,7 @@ export default function Login ({loginState, setLoginState}) {
 
   // update state based on form input changes
   const handleChange = (event) => {
+    event.preventDefault();
     const { name, value } = event.target;
 
     setLoginState({
@@ -35,19 +36,13 @@ export default function Login ({loginState, setLoginState}) {
     } catch (e) {
       console.error(e);
     }
-
-    // clear form values
-    // setLoginState({
-    //   email: '',
-    //   password: '',
-    // });
   };
 
   // error form
-  const handleErrorSubmit = async (event) => {
-    event.preventDefault();
+  // const handleErrorSubmit = async (event) => {
+  //   event.preventDefault();
 
-  }
+  // }
 
   return (
     <div className="login-container">

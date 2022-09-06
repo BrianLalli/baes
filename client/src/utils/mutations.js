@@ -27,18 +27,21 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation updateUser($user: User!) {
-    updateUser (args: $user) {
-      token
-      user {
-        _id
-        email
-        password
-        username
-      }
-    }
+mutation Mutation($username: String, $email: String, $allergies: String, $hobbies: String, $faveFoods: String, $hateFoods: String, $phobias: String, $birthday: String) {
+  updateUser(username: $username, email: $email, allergies: $allergies, hobbies: $hobbies, faveFoods: $faveFoods, hateFoods: $hateFoods, phobias: $phobias, birthday: $birthday) {
+    username
+    password
+    email
+    allergies
+    hobbies
+    faveFoods
+    hateFoods
+    phobias
+    birthday
   }
+}
 `;
+
 
 export const DELETE_USER = gql`
   mutation deleteUser($user: User!) {

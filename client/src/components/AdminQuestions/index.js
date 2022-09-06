@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
+
 import { Link } from 'react-router-dom';
 import { ADD_CONNECTION, UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
 // import { QUERY_ME } from '../../utils/queries'
 
+
 //missing functionality to text boxes
 
 export default function Admin({ adminState, setAdminState }) {
 
-  const [localAdminState, setLocalAdminState] = useState(adminState)
+  const [localAdminState, setLocalAdminState] = useState(adminState);
+
+  useEffect(() => {
+    setLocalAdminState(adminState);
+  }, [adminState]);
 
   //mutation to fetch data
   //add logic to populate form fields
   //logic to save state of each input that user submits
   //click save changes -> mutuation to update user 
 
-  const [updateUser, { error, data }] = useMutation(UPDATE_USER);
-  // const [addConnection, { error, data }] = useMutation(ADD_CONNECTION);
+  const [updateUser , { error, data }] = useMutation(UPDATE_USER);
+// const [addConnection, { error, data }] = useMutation(ADD_CONNECTION);
 
   // update state based on form input changes
   const handleUserInfoChange = (e) => {
@@ -27,12 +33,12 @@ export default function Admin({ adminState, setAdminState }) {
     if (name === "connection") {
       //do something else
     } else {
-      setLocalAdminState({
-        ...localAdminState,
-        [name]: value,
-      });
-    }
-    console.log(adminState)
+    setLocalAdminState({
+      ...localAdminState,
+      [name]: value,
+    });
+  }
+  console.log(localAdminState)
   };
 
   // const handleConnectionChange = (e) => {
@@ -42,17 +48,20 @@ export default function Admin({ adminState, setAdminState }) {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+    // console.log("just before the mutation")
     try {
       const { data } = await updateUser({
-        variables: { localAdminState },
+        variables: { ...localAdminState },
       });
 
-      setAdminState({ localAdminState });
+      setAdminState({
+        ...adminState,
+        ...localAdminState
+      });
       console.log("adminstate", adminState)
       console.log("localstate", localAdminState)
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -61,7 +70,6 @@ export default function Admin({ adminState, setAdminState }) {
     e.preventDefault();
 
   }
-
 
   return (
     <div>
@@ -83,12 +91,12 @@ export default function Admin({ adminState, setAdminState }) {
               </form> */}
 
 
-              <h2 id='username'>murderclaws56</h2>
+              <h2 id='username'>{localAdminState.username}</h2>
               <h4>Edit account information.</h4>
               <form className='custom-text-align' onSubmit={handleFormSubmit}>
                 <div className='form-group'>
                   <label htmlFor='inputUsername'>Update Username</label>
-                  <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='murderclasw56' />
+                  <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='username' value={localAdminState.username} />
                 </div>
 
                 {/* <div className='form-group'>
@@ -103,7 +111,7 @@ export default function Admin({ adminState, setAdminState }) {
 
                 <div className='form-group'>
                   <label htmlFor='inputEmail'>Update Email</label>
-                  <input onChange={handleUserInfoChange} name='email' type='email' className='form-control' id='inputEmail' placeholder='whiskers@yahoo.com' />
+                  <input onChange={handleUserInfoChange} name='email' type='email' className='form-control' id='inputEmail' placeholder='whiskers@yahoo.com' value={localAdminState.email}/>
                   <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
                 </div>
                 <br />
@@ -112,44 +120,49 @@ export default function Admin({ adminState, setAdminState }) {
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='allergies'>Allergies</label>
-                    <input onChange={handleUserInfoChange} name='allergies' type='text' className='form-control' id='allergies' placeholder='Allergies' />
+                    <input onChange={handleUserInfoChange} name='allergies' type='text' className='form-control' id='allergies' placeholder='Allergies' value={localAdminState.allergies}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='hobbies'>Hobbies</label>
-                    <input onChange={handleUserInfoChange} name='hobbies' type='text' className='form-control' id='hobbies' placeholder='Hobbies' />
+                    <input onChange={handleUserInfoChange} name='hobbies' type='text' className='form-control' id='hobbies' placeholder='Hobbies' value={localAdminState.hobbies}/>
                   </div>
                 </div>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='faveFoods'>Favorite Foods</label>
-                    <input onChange={handleUserInfoChange} name='faveFoods' type='text' className='form-control' id='faveFoods' placeholder='Foods I Like' />
+                    <input onChange={handleUserInfoChange} name='faveFoods' type='text' className='form-control' id='faveFoods' placeholder='Foods I Like' value={localAdminState.faveFoods}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='hateFoods'>Loathed Foods</label>
-                    <input onChange={handleUserInfoChange} name='hateFoods' type='text' className='form-control' id='hateFoods' placeholder='Foods I Dislike' />
+                    <input onChange={handleUserInfoChange} name='hateFoods' type='text' className='form-control' id='hateFoods' placeholder='Foods I Dislike' value={localAdminState.hateFoods}/>
                   </div>
                 </div>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='phobias'>Phobias</label>
-                    <input onChange={handleUserInfoChange} name='phobias' type='text' className='form-control' id='phobias' placeholder='Phobias' />
+                    <input onChange={handleUserInfoChange} name='phobias' type='text' className='form-control' id='phobias' placeholder='Phobias' value={localAdminState.phobias}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='birthday'>Birthday</label>
                     <input onChange={handleUserInfoChange} name='birthday' type='text' className='form-control'
-                      id='birthday' placeholder='Birthday' />
+                      id='birthday' placeholder='Birthday' value={localAdminState.birthday}/>
                   </div>
                 </div>
-              </form>
               <br />
+
+              <div className='text-center'>
+                <button className='btn btn-info btn-margin' type='submit'>Save Changes</button>
+                <button className='btn btn-danger btn-margin'>Delete Account</button>
+              </div>
+              </form>
               <br />
 
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input onChange={handleUserInfoChange} name='connection' type='text' className='form-control' placeholder='Enter Connection Username' />
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' />
                 <div className='input-group-append'>
                   <button className='btn btn-outline-info' type='button'>Add Connection</button>
                 </div>
@@ -164,10 +177,6 @@ export default function Admin({ adminState, setAdminState }) {
               </ul>
 
               <br />
-              <div className='text-center'>
-                <button className='btn btn-info btn-margin'>Save Changes</button>
-                <button className='btn btn-danger btn-margin'>Delete Account</button>
-              </div>
 
 
             </div>
