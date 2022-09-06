@@ -14,6 +14,8 @@ export default function Admin({ adminState, setAdminState }) {
 
   const [localAdminState, setLocalAdminState] = useState(adminState);
 
+  const [connectionID, setConnectionID] = useState("");
+
   useEffect(() => {
     setLocalAdminState(adminState);
   }, [adminState]);
@@ -24,7 +26,7 @@ export default function Admin({ adminState, setAdminState }) {
   //click save changes -> mutuation to update user 
 
   const [updateUser , { error, data }] = useMutation(UPDATE_USER);
-// const [addConnection, { error, data }] = useMutation(ADD_CONNECTION);
+const [addConnection, { }] = useMutation(ADD_CONNECTION);
 
   // update state based on form input changes
   const handleUserInfoChange = (e) => {
@@ -32,6 +34,7 @@ export default function Admin({ adminState, setAdminState }) {
 
     if (name === "connection") {
       //do something else
+      setConnectionID(value);
     } else {
     setLocalAdminState({
       ...localAdminState,
@@ -64,6 +67,18 @@ export default function Admin({ adminState, setAdminState }) {
       console.error(error);
     }
   };
+
+  const handleAddIDChange = (event) => {
+
+  }
+
+  const handleAddConnection = async () => {
+    const { data } = await addConnection({
+      variables: { user: connectionID }
+    });
+
+    console.log(data)
+  }
 
   // error form
   const handleErrorSubmit = async (e) => {
@@ -162,9 +177,14 @@ export default function Admin({ adminState, setAdminState }) {
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' />
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' 
+                onChange={handleUserInfoChange}
+                value={connectionID}
+                />
                 <div className='input-group-append'>
-                  <button className='btn btn-outline-info' type='button'>Add Connection</button>
+                  <button className='btn btn-outline-info' type='button'
+                  onClick={handleAddConnection}
+                  >Add Connection</button>
                 </div>
               </div>
 

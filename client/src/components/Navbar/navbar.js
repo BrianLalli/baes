@@ -1,42 +1,46 @@
 import React, { useState } from "react";
 import Style from "../Navbar/Navbar.module.scss";
-import Toggler from "../Toggler/Toggler";
 import { Link, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 
 const links = [
   {
     name: "Bae/s",
-    type: "icon",
+    type: "Logo",
     // src: "../Logo/LogoElephant3.png",
     to: "/",
     active: "home",
   },
-  {
-    name: "Get Started",
-    to: "/",
-    active: "getStarted",
-  },
+  // {
+  //   name: "Get Started",
+  //   to: "/",
+  //   active: "getStarted",
+  // },
   {
     name: "Login",
     to: "/login",
     active: "login",
   },
   {
-    name: "Home",
-    to: "/home",
-    active: "home",
-  },
-  {
     name: "Admin",
     to: "/admin",
     active: "admin",
   },
-  // {
-  //     name: 'Profile',
-  //     to: '/profile',
-  //     active: 'resume'
-  // },
+  {
+    name: "Connections",
+    to: "/connections",
+    active: "connections",
+  },
+  {
+    name: 'Profile',
+    to: '/profile',
+    active: 'profile'
+  },
+//   {
+//     name: 'Logout',
+//     to: '/logout',
+//     active: 'logout'
+// },
 ];
 
 export default function Navbar({ handleClick }) {
