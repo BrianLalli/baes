@@ -66,9 +66,10 @@ const resolvers = {
     // add by id, remove from set: connection
     addConnection: async(parent, {user}, context) => {
       if(context.user) {
+        const connect = await User.findOne({username: user})
         return User.findOneAndUpdate(
           {_id: context.user._id},
-          {$addToSet: {connections: user}},
+          {$addToSet: {connections: connect._id}},
           {
             new: true,
             runValidators: true,
