@@ -8,14 +8,15 @@ import {Box} from "@mui/material";
 const links = [
     {
         name: "Bae/s",
-        // type: 'icon',
+        type: 'icon',
+        // src: "../Logo/LogoElephant3.png",
         to: '/',
         active: 'home'
     },
     {
-        name: 'Home',
-        to: '/home',
-        active: 'home'
+        name: 'Get Started',
+        to: '/',
+        active: 'getStarted'
     },
     {
         name: 'Login',
@@ -23,32 +24,33 @@ const links = [
         active: 'login'
     },
     {
-        name: 'Get Started',
-        to: '/',
-        active: 'getStarted'
+        name: 'Home',
+        to: '/home',
+        active: 'home'
+    },
+    {
+        name: 'Admin',
+        to: '/admin',
+        active: 'admin'
     },
     // {
     //     name: 'Profile',
     //     to: '/profile',
     //     active: 'resume'
     // },
-    // {
-    //     name: 'Admin',
-    //     to: '/admin',
-    //     active: 'admin'
-    // },
+
 ]
 
-export default function Navbar({darkMode, handleClick}) {
+export default function Navbar({handleClick}) {
     const location = useLocation()
     const [active, setActive] = useState(location.pathname === '/' ? 'home' : location.pathname.slice(1, location.pathname.length));
 
 
     return (
         <Box component={'nav'} width={'100%'}>
-            <Box component={'ul'} display={'flex'} justifyContent={'center'} alignItems={'center'}
+            <Box component={'ul'} display={'flex'} justifyContent={'center'} alignItems={'center'} 
                  gap={{xs: '2rem', md: '8rem'}}
-                 textTransform={'lowercase'} fontSize={'1rem'}>
+                 fontSize={'1rem'}>
                 {links.map((link, index) => (
                     <Box key={index} component={'li'} className={(link.active === active && !link.type) && Style.active}
                         //  sx={{borderImageSource: info.gradient}}
@@ -61,10 +63,6 @@ export default function Navbar({darkMode, handleClick}) {
                         </Link>
                     </Box>
                 ))}
-                <li>
-                    <Toggler darkMode={darkMode} handleClick={handleClick}/>
-                </li>
-  
             </Box>
         </Box>
     )

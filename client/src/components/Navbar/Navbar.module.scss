@@ -7,13 +7,18 @@ nav {
 .active {
   border-bottom: 5px solid;
   border-image-slice: 1;
+  
 }
+
 
 li {
   transition: $transition;
+  color: #008080 !important;
+ 
 
   &:hover {
     transform: translateY(-3px);
     transition: $transition;
+    color: #E051AB !important;
   }
 }
