@@ -75,11 +75,9 @@ const typeDefs = gql`
       hobbies: String
     ): User
 
-    // addConnection(
-    //   user: ID!
-    // ): User
-
-    
+    addConnection(
+      user: ID!
+    ): User
 
     deleteConnection(
       user: ID!
