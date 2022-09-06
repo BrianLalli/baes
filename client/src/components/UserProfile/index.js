@@ -3,6 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth.js';
+import './userProfile.css'
 
 export default function UserProfile(){
   const { userId } = useParams();
@@ -24,7 +25,6 @@ export default function UserProfile(){
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(user)
   if (!user?.username) {
     return (
       <h4 className='text-center'>
@@ -33,26 +33,28 @@ export default function UserProfile(){
     );
   }
   return (
-  <div>
-    <h4 className="card-header p-2 m-0 col-12 col-md-6" id="userProfile">
-              {user.username}'s Profile
-              <br />
-            </h4>
-            <div className="card-body bg-light p-2 col-12 col-md-6">
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">User ID: {user._id}</li>
-              <li className="list-group-item">Email: {user.email}</li>
-              <li className="list-group-item">Allergies: {user.allergies}</li>
-              <li className="list-group-item">Favorite Foods: {user.faveFoods}</li>
-              <li className="list-group-item">Disliked Foods: {user.hateFoods}</li>
-              <li className="list-group-item">Birthday: {user.birthday}</li>
-              <li className="list-group-item">Phobias: {user.phobias}</li>
-              <li className="list-group-item">Hobbies: {user.hobbies}</li>
-              <li className="list-group-item">Connections: {user.connections}</li>
-              <li className="list-group-item" id="addNotes">Add Note: </li>
-              <li className="list-group-item">Notes: {user.notes} </li>
-              </ul>
+  <div className='container mt-5' id="profile">
+    
+    <div className='row justify-content-md-center '>
+      <h4 className="card-header m-0 col-12 col-lg-9 custom-card-header " id="userProfile">
+        <strong className='strong-header m-2'>{user.username}'s Profile</strong>
+      </h4>
+    
+      <div className="card-body row justify-content-md-center custom-card-body">
+        <ul className="list-group list-group-flush col-12 col-lg-9 custom-ul">
+          <li className="list-group-item">User ID: {user._id}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Email: </strong>{user.email}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Allergies: </strong>{user.allergies}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Favorite Foods: </strong>{user.faveFoods}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Disliked Foods: </strong>{user.hateFoods}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Birthday: </strong>{user.birthday}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Phobias: </strong>{user.phobias}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Hobbies: </strong>{user.hobbies}</li>
+          <li className="list-group-item"><strong className='strong-list-item'>Connections: </strong>{user.connections}</li>
+        </ul>
+      </div>
 
- </div>
- </div>
- )}
+  </div>
+  </div>
+ )
+}

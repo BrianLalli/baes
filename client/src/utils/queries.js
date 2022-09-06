@@ -33,6 +33,21 @@ export const QUERY_ME = gql`
     me {
       _id
       name
+      notes {
+        content
+        date
+      }
+    }
+  }
+`;
+
+export const QUERY_NOTES = gql`
+  query getNotes {
+    notes {
+      _id
+      title
+      content
+      date
     }
   }
 `;

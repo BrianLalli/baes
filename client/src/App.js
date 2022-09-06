@@ -41,7 +41,7 @@ function App() {
             
           </Routes>
 
-          <Grid item>
+          <Grid item >
             <Box
               component={"footer"}
               display={"flex"}

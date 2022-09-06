@@ -1,0 +1,34 @@
+.custom-card-header {
+    background-color: #E051AB !important;
+    height: 75px;
+    border: 4px solid #273057;
+    font-size: 55px;
+}
+
+.strong-header {
+    background-color: #E051AB;
+    color: #273057;
+}
+
+.custom-card-body ul li{
+    color: #273057;
+    background-color: #F4F1F5;
+    border: #273057 solid 1px;
+
+}
+
+.strong-list-item {
+    background-color: #F4F1F5;
+}
+
+.list-group :hover {
+    background-color: #EBA28C;
+}
+
+.custom-ul {
+    border: 4px solid #273057
+}
+
+.custom-btn {
+    width: 200px;
+}
