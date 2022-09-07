@@ -8,25 +8,20 @@ import Logout from '../Logout';
 const links = [
   {
     name: "Bae/s",
-    type: "Logo",
+    type: "icon",
     // src: "../Logo/LogoElephant3.png",
     to: "/",
     active: "home",
   },
-  // {
-  //   name: "Get Started",
-  //   to: "/",
-  //   active: "getStarted",
-  // },
+  {
+    name: "Get Started",
+    to: "/",
+    active: "getStarted",
+  },
   {
     name: "Login",
     to: "/login",
     active: "login",
-  },
-  {
-    name: "Admin",
-    to: "/admin",
-    active: "admin",
   },
   {
     name: "Connections",
@@ -34,15 +29,15 @@ const links = [
     active: "connections",
   },
   {
-    name: 'Profile',
-    to: '/profile',
-    active: 'profile'
+    name: "Admin",
+    to: "/admin",
+    active: "admin",
   },
-//   {
-//     name: 'Logout',
-//     to: '/logout',
-//     active: 'logout'
-// },
+  // {
+  //     name: 'Profile',
+  //     to: '/profile',
+  //     active: 'resume'
+  // },
 ];
 
 export default function Navbar({ handleClick }) {

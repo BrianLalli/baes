@@ -5,17 +5,12 @@ import { Link } from 'react-router-dom';
 import { ADD_CONNECTION, DELETE_CONNECTION, UPDATE_USER, DELETE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
-// import { QUERY_ME } from '../../utils/queries'
 
-
-//missing functionality to text boxes
 
 export default function Admin({ adminState, setAdminState }) {
 
   const [localAdminState, setLocalAdminState] = useState(adminState);
   const [connectionState, setConnectionState] = useState('');
-
-  const [connectionID, setConnectionID] = useState("");
 
   useEffect(() => {
     setLocalAdminState(adminState);
@@ -88,7 +83,7 @@ export default function Admin({ adminState, setAdminState }) {
 
   const handleRemoveConnection = async(e) => {
     e.preventDefault();
-   console.log(e.target.value)
+  //  console.log(e.target.value)
 
    try {
     const { data } = await deleteConnection({
@@ -109,7 +104,7 @@ export default function Admin({ adminState, setAdminState }) {
     e.preventDefault();
     try {
       const { data } = Auth.getProfile();
-      console.log(data._id)
+      // console.log(data._id)
       const { data: deleteData } = await deleteUser({
         variables: {user: data._id }
       })
@@ -121,18 +116,6 @@ export default function Admin({ adminState, setAdminState }) {
     }
   };
 
-
-  // error form
-  const handleErrorSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-
-    } catch (error) {
-      console.error(error);
-    }
-
-  }
 
   return (
     <div>
@@ -152,8 +135,6 @@ export default function Admin({ adminState, setAdminState }) {
                   <input type='file' className='form-control-file' id='uploadPhoto' />
                 </div>
               </form> */}
-
-
               <h2 id='username'>{localAdminState.username}</h2>
               <h4>Edit account information.</h4>
               <form className='custom-text-align' onSubmit={handleFormSubmit}>
@@ -161,16 +142,6 @@ export default function Admin({ adminState, setAdminState }) {
                   <label htmlFor='inputUsername'>Update Username</label>
                   <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='username' value={localAdminState.username} />
                 </div>
-
-                {/* <div className='form-group'>
-                  <label htmlFor='inputPassword'>Update Password</label>
-                  <input onChange={handleUserInfoChange} name='password' type='password' className='form-control' id='inputPassword' placeholder='******' />
-                </div>
-
-                <div className='form-group'>
-                  <label htmlFor='confirmPassword'>Confirm Password</label>
-                  <input onChange={handleUserInfoChange} name='confirm-password' type='password' className='form-control' id='confirmPassword' placeholder='********' />
-                </div> */}
 
                 <div className='form-group'>
                   <label htmlFor='inputEmail'>Update Email</label>
@@ -225,7 +196,7 @@ export default function Admin({ adminState, setAdminState }) {
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username' onChange={handleUserInfoChange} value={connectionID}/>
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username' onChange={handleUserInfoChange}/>
                 <div className='input-group-append'>
                   <button className='btn btn-outline-info' type='button' onClick={handleAddConnection}>Add Connection</button>
                 </div>
@@ -239,12 +210,8 @@ export default function Admin({ adminState, setAdminState }) {
                     <button className='btn btn-outline-danger' type='button' onClick={handleRemoveConnection} value={connection._id}>Delete Connection</button>
                   </li>
                 ))}
-
               </ul>
-
               <br />
-
-
             </div>
           </div>
         </div>

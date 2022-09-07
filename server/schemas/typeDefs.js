@@ -88,13 +88,15 @@ const typeDefs = gql`
   
     updateNote(
       userId: ID!
+      title: String
       content: String
     ): User
     
     removeNote(
       userId: ID!
+      title: String
       content: String
-    ): User
+    ): Int
   
   }
 `;
