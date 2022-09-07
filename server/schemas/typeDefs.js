@@ -22,6 +22,7 @@ const typeDefs = gql`
     content: String
   }
 
+
   type Auth {
     token: ID!
     user: User
@@ -80,19 +81,14 @@ const typeDefs = gql`
     ): User
 
     addNote(
-      userId: ID!
-      note: String
+      content: String!
     ): User
   
     updateNote(
-      userId: ID!
-      title: String
       content: String
     ): User
     
     removeNote(
-      userId: ID!
-      title: String
       content: String
     ): Int
   

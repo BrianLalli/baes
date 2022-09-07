@@ -18,10 +18,10 @@ const AddNote = () => {
 
     try {
       const {data} = addNote({
-        variable: { ...formState },
+        variables: { ...formState },
       });
 
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       console.error(err);
     }
