@@ -72,7 +72,7 @@ export default function AppContainer() {
         adminState={userState}
         setAdminState={setUserState}/>} 
         />
-        <Route path="/profile/:userId" element={<Profile     userState={userState}
+        <Route path="/profile/:userId" element={<Profile userState={userState}
         setUserState={setUserState}/>} />
       </Routes>
       <Grid item>
