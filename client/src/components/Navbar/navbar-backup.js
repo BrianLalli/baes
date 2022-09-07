@@ -9,13 +9,15 @@ import Login from "../Login";
 {
   Auth.loggedIn() ? <Logout /> : <p>not logged in</p>;
 }
+
 const handleLogout = () => {
   Auth.logout();
   window.location.assign("/")
 };
+
 const links = [
   {
-    name: "Baes",
+    name: "Bae/s",
     type: "Logo",
     // src: "../Logo/LogoElephant3.png",
     to: "/",
@@ -52,6 +54,7 @@ const links = [
   //   active: "logout",
   // },
 ];
+
 export default function Navbar({ handleClick }) {
   const location = useLocation();
   const [active, setActive] = useState(
@@ -61,7 +64,7 @@ export default function Navbar({ handleClick }) {
   );
   return (
     <Box component={"nav"} width={"100%"}>
-      {/* <Box
+      {/* <Box 
        component={"img"}
        display={"flex"}
        justifyContent={"center"}
@@ -115,16 +118,16 @@ export default function Navbar({ handleClick }) {
           >
             <Link
               to={"/login"}
-              // onClick={() => {
-              //   setActive(Login);
-              // }}
+              onClick={() => {
+                setActive(Login);
+              }}
             >
               <h1>Login</h1>
             </Link>
           </Box>
         ):(
           <div>
-            <button className="custom-save-btn btn-margin" onClick={handleLogout}>
+            <button className="btn btn-warning" onClick={handleLogout}>
               Logout
             </button>
           </div>
