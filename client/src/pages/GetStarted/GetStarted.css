@@ -13,12 +13,13 @@
 
 .btn-info {
     background-color: #008080 !important;
-    border: solid 3px #273057 !important
+    border: solid 3px #273057 !important;
+    color:#f4f1f5 !important;
 }
 
 .btn-link {
     background-color: #008080 !important;
-    color: #f4f1f5;
+    color: #f4f1f5 !important;
     font-family: 'Neucha', cursive;
     text-decoration: none !important;
     font-size: 40px;
@@ -38,4 +39,9 @@
 
 .logo {
     border-radius: 20%;
+}
+
+.other-custom-btn:hover {
+    background-color: #016161;
+    font-size: bigger;
 }

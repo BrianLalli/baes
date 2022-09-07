@@ -89,7 +89,7 @@ const AddNote = () => {
               ></textarea>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-info btn-block py-3" type="submit">
+              <button className="custom-save-btn btn-margin" type="submit">
                 Add Note
               </button>
             </div>

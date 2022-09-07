@@ -41,18 +41,18 @@ export default function UserProfile(){
       </h4>
     
       {/* <div className="card-body custom-card-body col-12 col-lg-9"> */}
-        <ul className="list-group list-group-flush col-12 col-lg-9 custom-ul p-0">
-          <li className="list-group-item "><strong className='strong-list-item'>User ID: </strong> {user._id}</li>
-          <li className="list-group-item">
-            <strong className='strong-list-item'>Email: </strong>
+        <ul className="custom-list-group list-group-flush col-12 col-lg-9 custom-ul p-0">
+          <li className="custom-list-group-item ">User ID: {user._id}</li>
+          <li className="custom-list-group-item">
+            Email: 
             {user.email}
           </li>
-          <li className="list-group-item"><strong className='strong-list-item'>Allergies: </strong>{user.allergies}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Favorite Foods: </strong>{user.faveFoods}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Disliked Foods: </strong>{user.hateFoods}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Birthday: </strong>{user.birthday}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Phobias: </strong>{user.phobias}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Hobbies: </strong>{user.hobbies}</li>
+          <li className="custom-list-group-item">Allergies: {user.allergies}</li>
+          <li className="custom-list-group-item">Favorite Foods: {user.faveFoods}</li>
+          <li className="custom-list-group-item">Disliked Foods: {user.hateFoods}</li>
+          <li className="custom-list-group-item">Birthday: {user.birthday}</li>
+          <li className="custom-list-group-item">Phobias: {user.phobias}</li>
+          <li className="custom-list-group-item">Hobbies: {user.hobbies}</li>
           {/* <li className="list-group-item"><strong className='strong-list-item'>Connections: </strong>{user.connections}</li> */}
         </ul>
       {/* </div> */}

@@ -11,7 +11,7 @@ export default function GetStarted(){
                 <div className="col-12 col-md-6">
                     <h1 className='title'>Bae/s</h1>
                     <h2 className='subtitle'>Remember the important information</h2>
-                    <button type="button" className="btn btn-info">
+                    <button type="button" className="btn btn-info other-custom-btn">
                         <Link className="btn-link" to='/login'>Get Started</Link>
                     </button>
                 </div>
