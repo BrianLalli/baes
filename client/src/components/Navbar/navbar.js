@@ -126,9 +126,9 @@ export default function Navbar({ handleClick }) {
           >
             <Link
               to={"/login"}
-              onClick={() => {
-                setActive(Login);
-              }}
+              // onClick={() => {
+              //   setActive(Login);
+              // }}
             >
               <h1>Login</h1>
             </Link>
