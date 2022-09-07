@@ -73,7 +73,7 @@ export default function Admin({ adminState, setAdminState }) {
       const { data } = await addConnection({
         variables: {"user": connectionState}
       })
-      console.log(data);
+      // console.log(data);
       setLocalAdminState({
         ...localAdminState,
         connections:data.addConnection.connections
@@ -88,6 +88,7 @@ export default function Admin({ adminState, setAdminState }) {
     e.preventDefault();
    console.log(e.target.value)
 
+   try {
     const { data } = await deleteConnection({
       variables: {"user": e.target.value}
     }) 
@@ -96,16 +97,38 @@ export default function Admin({ adminState, setAdminState }) {
       ...localAdminState,
       connections: data.deleteConnection.connections
     })
+   } catch (error) {
+     console.error(error);
+   }
+
   }
 
   const handleDeleteUser = async (e) => {
-
+    e.preventDefault();
+    try {
+      const { data } = Auth.getProfile();
+      console.log(data._id)
+      const { data: deleteData } = await deleteUser({
+        variables: {user: data._id }
+      })
+      setLocalAdminState({})
+      Auth.logout()
+      window.location.assign('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
 
   // error form
   const handleErrorSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+
+    } catch (error) {
+      console.error(error);
+    }
 
   }
 
@@ -192,7 +215,7 @@ export default function Admin({ adminState, setAdminState }) {
 
               <div className='text-center'>
                 <button className='btn btn-info btn-margin' type='submit'>Save Changes</button>
-                <button className='btn btn-danger btn-margin'>Delete Account</button>
+                <button className='btn btn-danger btn-margin' onClick={handleDeleteUser}>Delete Account</button>
               </div>
               </form>
               <br />
