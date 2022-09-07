@@ -25,9 +25,9 @@ const links = [
     active: "login",
   },
   {
-    name: "Home",
-    to: "/home",
-    active: "home",
+    name: "Connections",
+    to: "/connections",
+    active: "connections",
   },
   {
     name: "Admin",
