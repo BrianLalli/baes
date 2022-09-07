@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import Style from "../Navbar/Navbar.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
+import Logout from "../Logout/index";
+import Auth from "../../utils/auth";
+import Login from "../Login";
+
+{
+  Auth.loggedIn() ? <Logout /> : <p>not logged in</p>;
+}
+
+const handleLogout = () => {
+  Auth.logout();
+  window.location.assign("/")
+};
 
 const links = [
   {
@@ -16,11 +28,11 @@ const links = [
   //   to: "/",
   //   active: "getStarted",
   // },
-  {
-    name: "Login",
-    to: "/login",
-    active: "login",
-  },
+  // {
+  //   name: "Login",
+  //   to: "/login",
+  //   active: "login",
+  // },
   {
     name: "Admin",
     to: "/admin",
@@ -32,15 +44,15 @@ const links = [
     active: "connections",
   },
   {
-    name: 'Profile',
-    to: '/profile',
-    active: 'profile'
+    name: "Profile",
+    to: "/profile",
+    active: "profile",
   },
-//   {
-//     name: 'Logout',
-//     to: '/logout',
-//     active: 'logout'
-// },
+  // {
+  //   name: "Logout",
+  //   to: "/logout",
+  //   active: "logout",
+  // },
 ];
 
 export default function Navbar({ handleClick }) {
@@ -97,6 +109,29 @@ export default function Navbar({ handleClick }) {
             </Link>
           </Box>
         ))}
+        {!Auth.loggedIn() ? (
+          <Box
+            // key={index}
+            component={"li"}
+            // className={link.active === active && !link.type && Style.active}
+            //  sx={{borderImageSource: info.gradient}}
+          >
+            <Link
+              to={"/login"}
+              onClick={() => {
+                setActive(Login);
+              }}
+            >
+              <h1>Login</h1>
+            </Link>
+          </Box>
+        ):(
+          <div>
+            <button className="btn btn-warning" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        )}
       </Box>
     </Box>
   );

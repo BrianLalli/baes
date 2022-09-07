@@ -5,6 +5,7 @@ import Logout from '../../components/Logout';
 
 export default function adminPage({adminState, setAdminState}) {
   return (
+    
     <div>
       <Admin 
       adminState={ adminState }

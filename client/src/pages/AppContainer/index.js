@@ -88,6 +88,8 @@ export default function AppContainer() {
           py={"1.5rem"}
           sx={{ opacity: 0.7 }}
           width={"100%"}
+          position={"fixed"}
+          bottom={'0'}
         >
           <a href={"https://github.com/BrianLalli/baes"} className="github-link">
             <p>

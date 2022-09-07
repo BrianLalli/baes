@@ -26,7 +26,7 @@ export default function Admin({ adminState, setAdminState }) {
   //click save changes -> mutuation to update user 
 
   const [updateUser , { error, data }] = useMutation(UPDATE_USER);
-const [addConnection, { }] = useMutation(ADD_CONNECTION);
+  const [addConnection, { }] = useMutation(ADD_CONNECTION);
 
   // update state based on form input changes
   const handleUserInfoChange = (e) => {

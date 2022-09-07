@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Style from "./home.module.scss";
-// import me from "../../img/self.png";
-// import partner1 from "../../img/Partner1.png"
 import { Box } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 

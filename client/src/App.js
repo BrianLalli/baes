@@ -11,7 +11,6 @@ import Profile from './pages/Profile';
 import Navbar from "./components/Navbar/navbar";
 import Admin from './pages/Admin';
 // import { useMutation } from '@apollo/client';
-// import Toggler from "./components/Toggler/Toggler";
 import Style from "./App.module.scss";
 import { Box as Box, Grid } from "@mui/material";
 // import Footer from './components/Footer';
