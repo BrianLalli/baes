@@ -19,9 +19,7 @@ const typeDefs = gql`
 
   type Notes {
     _id: ID
-    title: String
     content: String
-    date: String
   }
 
   type Auth {
