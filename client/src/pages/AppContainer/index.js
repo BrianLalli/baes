@@ -6,9 +6,9 @@ import { useQuery } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GetStarted from "../GetStarted";
 import Login from "../Login";
-import Home from "../Home/Home";
+import Home from "../Home";
 import Profile from '../Profile';
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar/navbar";
 import Admin from '../Admin';
 // import { useMutation } from '@apollo/client';
 // import Toggler from "./components/Toggler/Toggler";
@@ -63,7 +63,7 @@ export default function AppContainer() {
         setSignupState={setUserState}
         setLoginState={setUserState}/>} 
         />
-        <Route path="/home" element={<Home />} />
+        <Route path="/connections" element={<Home userState={userState}/>} />
         <Route path="/profile" element={<Profile 
         userState={userState}
         setUserState={setUserState}/>}

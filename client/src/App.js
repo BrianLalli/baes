@@ -8,7 +8,7 @@ import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
 import Profile from './pages/Profile';
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/navbar";
 import Admin from './pages/Admin';
 // import { useMutation } from '@apollo/client';
 // import Toggler from "./components/Toggler/Toggler";
