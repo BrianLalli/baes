@@ -111,7 +111,7 @@ export default function Admin({ adminState, setAdminState }) {
         <div className='custom-container'>
           <div className='edit-profile-container row'>
             <div className='col-12 col-md-7 text-center'>
-              <img src='https://avatars.githubusercontent.com/u/74509058?v=4' alt='user avatar'
+              <img src='paperheart.png' alt='user avatar'
                 className='custom-img-thumbnail' />
               {/* possible modal with option to upload photo goes here */}
               {/* <br />
