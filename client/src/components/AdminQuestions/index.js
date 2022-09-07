@@ -15,6 +15,8 @@ export default function Admin({ adminState, setAdminState }) {
   const [localAdminState, setLocalAdminState] = useState(adminState);
   const [connectionState, setConnectionState] = useState('');
 
+  const [connectionID, setConnectionID] = useState("");
+
   useEffect(() => {
     setLocalAdminState(adminState);
   }, [adminState]);
@@ -223,7 +225,7 @@ export default function Admin({ adminState, setAdminState }) {
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username' onChange={handleUserInfoChange}/>
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username' onChange={handleUserInfoChange} value={connectionID}/>
                 <div className='input-group-append'>
                   <button className='btn btn-outline-info' type='button' onClick={handleAddConnection}>Add Connection</button>
                 </div>
