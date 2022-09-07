@@ -70,13 +70,16 @@ const typeDefs = gql`
       user: ID!
     ): User
 
+
+
     addConnection(
       user: ID!
     ): User
 
+
     deleteConnection(
       user: ID!
-    ): Int
+    ): User
 
     addNote(
       userId: ID!

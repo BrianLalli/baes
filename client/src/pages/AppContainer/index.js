@@ -6,11 +6,10 @@ import { useQuery } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GetStarted from "../GetStarted";
 import Login from "../Login";
-import Home from "../Home/Home";
+import Home from "../Home";
 import Profile from '../Profile';
 import Navbar from "../../components/Navbar/navbar";
 import Admin from '../Admin';
-import Logout from "../../components/Logout/index";
 // import { useMutation } from '@apollo/client';
 // import Toggler from "./components/Toggler/Toggler";
 import { Box as Box, Grid } from "@mui/material";
@@ -74,10 +73,6 @@ export default function AppContainer() {
         setAdminState={setUserState}/>} 
         />
         <Route path="/profile/:userId" element={<Profile />} />
-        <Route path="/logout" element={<Logout 
-        logoutState={userState}
-        setLogoutState={setUserState}/>} 
-        />
       </Routes>
       <Grid item>
         <Box
