@@ -37,6 +37,8 @@ h4 {
 }
 
 .submit-login-button:hover {
-  background: var(--blue);
+  color: var(--white);
+  background-color: #016161;
+  border-color: #016161;
 }
 
