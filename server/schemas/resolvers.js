@@ -2,6 +2,7 @@ const { signToken } = require('../utils/auth');
 const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const noteSchema = require('../models/Notes');
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -91,7 +92,7 @@ const resolvers = {
           },
           {
             new: true,
-            // runValidators: true,
+            runValidators: true,
           }
         );
   }

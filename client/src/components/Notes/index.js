@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
-export default function Notes({ notes }){
+export default function Notes({ notes, setNoteState }){
     // if (!notes.length) {
     //     return <h3>No Notes Yet</h3>
     // }
     
+    const [userData, setUserData] = useState({})
+    
+   useEffect(() => {
+       console.log({notes})
+       setUserData(notes);
+   }, [notes])
+   
     
     return (
       <div className="container mt-5" id='notes'>
-            {notes && notes.map((note) => (
+            {/* {notes && notes.map((note) => (
                 <div key={note._id} className="card mb-3" >
                     <p>{note.content}</p>
                 </div>
-            ))}
+            ))} */}
 
 
             {/* <div className='row justify-content-center'>

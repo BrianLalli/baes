@@ -10,7 +10,7 @@ import AddNote from '../../components/AddNote';
 import Notes from '../../components/Notes';
 
 
-export default function Profile({userData}) {
+export default function Profile({userState}) {
   const { userId } = useParams();
 
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -42,7 +42,8 @@ export default function Profile({userData}) {
       <ProfileNavTabs />
       <UserProfile />
       <AddNote />
-      <Notes notes={userData} />
+      <Notes
+      notes={userState}/>
     </div>
   );
 }
