@@ -44,14 +44,11 @@ mutation Mutation($username: String, $email: String, $allergies: String, $hobbie
 
 
 export const DELETE_USER = gql`
-  mutation deleteUser($user: User!) {
-    deleteUser(args:$user) {
-      user {
-        _id
-        email
-      }
-    }
+mutation Mutation($user: ID!) {
+  deleteUser(user: $user) {
+    username
   }
+}
 `;
 
 
