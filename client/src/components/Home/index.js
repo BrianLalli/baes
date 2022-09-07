@@ -12,8 +12,10 @@ useEffect(() => {
 }, [userState])
 
 return (
-<>
-<h3> Connections </h3>
+<> 
+<div className="container">
+  <div className="row">
+<h3 className="col-12"> Connections </h3>
 <ul>
   {
       userData.connections ? userData.connections.map(connection => {
@@ -25,6 +27,8 @@ return (
       }) : ""
   }
 </ul>
+</div>
+</div>
 </>
 );
 }

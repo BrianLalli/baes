@@ -14,7 +14,7 @@ const handleLogout = () => {
 };
 const links = [
   {
-    name: "Bae/s",
+    name: "Baes",
     type: "Logo",
     // src: "../Logo/LogoElephant3.png",
     to: "/",
