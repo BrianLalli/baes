@@ -5,25 +5,14 @@ import { Box } from "@mui/material";
 import Logout from "../Logout/index";
 import Auth from "../../utils/auth";
 import Login from "../Login";
-<<<<<<< HEAD
 
 {
   Auth.loggedIn() ? <Logout /> : <p>not logged in</p>;
 }
-
-=======
-{
-  Auth.loggedIn() ? <Logout /> : <p>not logged in</p>;
-}
->>>>>>> 86e10620054c029f07df027443d3a284391d0766
 const handleLogout = () => {
   Auth.logout();
   window.location.assign("/")
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> 86e10620054c029f07df027443d3a284391d0766
 const links = [
   {
     name: "Bae/s",

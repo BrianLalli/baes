@@ -21,15 +21,10 @@ export default function Admin({ adminState, setAdminState }) {
   //logic to save state of each input that user submits
   //click save changes -> mutuation to update user 
 
-<<<<<<< HEAD
-  const [updateUser , { error, data }] = useMutation(UPDATE_USER);
-  const [addConnection, { }] = useMutation(ADD_CONNECTION);
-=======
   const [updateUser , { error: addUserError, data: addUserData }] = useMutation(UPDATE_USER);
   const [deleteUser, {error: delUserError, data: delUserData}] = useMutation(DELETE_USER);
   const [addConnection, { error: addError, data: addData }] = useMutation(ADD_CONNECTION); 
   const [deleteConnection, { error: deleteError, data: removeData }] = useMutation(DELETE_CONNECTION); 
->>>>>>> 86e10620054c029f07df027443d3a284391d0766
 
   // update state based on form input changes
   const handleUserInfoChange = (e) => {

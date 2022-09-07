@@ -83,10 +83,10 @@ export default function AppContainer() {
           py={"1.5rem"}
           sx={{ opacity: 0.7 }}
           width={"100%"}
-          position={"fixed"}
+          // position={"fixed-bottom"}
           bottom={'0'}
         >
-          <a href={"https://github.com/BrianLalli/baes"} className="github-link">
+          <a href={"https://github.com/BrianLalli/baes"} className="github-link fixed-bottom text-center">
             <p>
               Lovers Not Fighters &copy; 2022
             </p>
