@@ -1,6 +1,7 @@
 const { signToken } = require('../utils/auth');
 const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
+const noteSchema = require('../models/Notes');
 
 
 const resolvers = {
@@ -67,9 +68,10 @@ const resolvers = {
     // add by id, remove from set: connection
     addConnection: async(parent, {user}, context) => {
       if(context.user) {
+        const connect = await User.findOne({username: user})
         return User.findOneAndUpdate(
           {_id: context.user._id},
-          {$addToSet: {connections: user}},
+          {$addToSet: {connections: connect._id}},
           {
             new: true,
             runValidators: true,
@@ -97,10 +99,12 @@ const resolvers = {
 
     addNote: async (parent, { userId, note }, context) => {
       if (context.user) {
+      //  we need to create an object to insert into the users notes array. The object should have a key of content and a value of the actual note. This is because the notes schema has a content property
+        let test = { content: note }
         return User.findOneAndUpdate(
           { _id: userId },
           {
-            $addToSet: { notes: note },
+            $addToSet: { notes: test },
           },
           {
             new: true,

@@ -70,13 +70,16 @@ const typeDefs = gql`
       user: ID!
     ): User
 
+
+
     addConnection(
       user: ID!
     ): User
 
+
     deleteConnection(
       user: ID!
-    ): Int
+    ): User
 
     addNote(
       userId: ID!
@@ -85,15 +88,13 @@ const typeDefs = gql`
   
     updateNote(
       userId: ID!
-      title: String
       content: String
     ): User
     
     removeNote(
       userId: ID!
-      title: String
       content: String
-    ): Int
+    ): User
   
   }
 `;

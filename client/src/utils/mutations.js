@@ -44,45 +44,38 @@ mutation Mutation($username: String, $email: String, $allergies: String, $hobbie
 
 
 export const DELETE_USER = gql`
-  mutation deleteUser($user: User!) {
-    deleteUser(args:$user) {
-      user {
-        _id
-        email
-      }
-    }
+mutation Mutation($user: ID!) {
+  deleteUser(user: $user) {
+    username
   }
+}
 `;
 
 
 
 //add connection
 export const ADD_CONNECTION = gql`
-  mutation addConnection($user: ID!) {
-    addConnection(user: $user) {
-        _id
-        username
-        connections {
-          username
-        }
-      }
+mutation AddConnection($user: ID!) {
+  addConnection(user: $user) {
+    username
+    connections {
+      username
+    }
   }
+}
 `;
 
 
 // //delete connection
 export const DELETE_CONNECTION = gql`
-  mutation deleteConnection($id: ID!) {
-    deleteConnection(_id: $id) {
-      user {
-        _id
-        username
-        connections {
-          username
-        }
-      }
+mutation DeleteConnection($user: ID!) {
+  deleteConnection(user: $user) {
+    _id
+    connections {
+      _id
     }
   }
+}
 `;
 
 

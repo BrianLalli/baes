@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { Link } from 'react-router-dom';
-import { ADD_CONNECTION, UPDATE_USER } from '../../utils/mutations';
+import { ADD_CONNECTION, DELETE_CONNECTION, UPDATE_USER, DELETE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
 // import { QUERY_ME } from '../../utils/queries'
@@ -13,6 +13,7 @@ import './admin.css';
 export default function Admin({ adminState, setAdminState }) {
 
   const [localAdminState, setLocalAdminState] = useState(adminState);
+  const [connectionState, setConnectionState] = useState('');
 
   const [connectionID, setConnectionID] = useState("");
 
@@ -25,33 +26,30 @@ export default function Admin({ adminState, setAdminState }) {
   //logic to save state of each input that user submits
   //click save changes -> mutuation to update user 
 
-  const [updateUser , { error, data }] = useMutation(UPDATE_USER);
-const [addConnection, { }] = useMutation(ADD_CONNECTION);
+  const [updateUser , { error: addUserError, data: addUserData }] = useMutation(UPDATE_USER);
+  const [deleteUser, {error: delUserError, data: delUserData}] = useMutation(DELETE_USER);
+  const [addConnection, { error: addError, data: addData }] = useMutation(ADD_CONNECTION); 
+  const [deleteConnection, { error: deleteError, data: removeData }] = useMutation(DELETE_CONNECTION); 
 
   // update state based on form input changes
   const handleUserInfoChange = (e) => {
+    e.preventDefault();
+
     const { name, value } = e.target;
 
-    if (name === "connection") {
-      //do something else
-      setConnectionID(value);
-    } else {
+    if (name === 'connection') {
+      setConnectionState(value);
+    }
     setLocalAdminState({
       ...localAdminState,
       [name]: value,
     });
-  }
-  console.log(localAdminState)
+
+    // console.log(localAdminState)
   };
-
-  // const handleConnectionChange = (e) => {
-
-  // }
-
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // console.log("just before the mutation")
     try {
       const { data } = await updateUser({
         variables: { ...localAdminState },
@@ -61,28 +59,78 @@ const [addConnection, { }] = useMutation(ADD_CONNECTION);
         ...adminState,
         ...localAdminState
       });
-      console.log("adminstate", adminState)
-      console.log("localstate", localAdminState)
+      window.location.reload();
+      // console.log("adminstate", adminState)
+      // console.log("localstate", localAdminState)
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleAddIDChange = (event) => {
+  const handleAddConnection = async(e) => {
+    e.preventDefault();
+
+    try {
+      // console.log("connection", connectionState);
+      const { data } = await addConnection({
+        variables: {"user": connectionState}
+      })
+      // console.log(data);
+      setLocalAdminState({
+        ...localAdminState,
+        connections:data.addConnection.connections
+      })
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleRemoveConnection = async(e) => {
+    e.preventDefault();
+   console.log(e.target.value)
+
+   try {
+    const { data } = await deleteConnection({
+      variables: {"user": e.target.value}
+    }) 
+    
+    setLocalAdminState({
+      ...localAdminState,
+      connections: data.deleteConnection.connections
+    })
+   } catch (error) {
+     console.error(error);
+   }
 
   }
 
-  const handleAddConnection = async () => {
-    const { data } = await addConnection({
-      variables: { user: connectionID }
-    });
+  const handleDeleteUser = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = Auth.getProfile();
+      console.log(data._id)
+      const { data: deleteData } = await deleteUser({
+        variables: {user: data._id }
+      })
+      setLocalAdminState({})
+      Auth.logout()
+      window.location.assign('/');
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    console.log(data)
-  }
 
   // error form
   const handleErrorSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+
+    } catch (error) {
+      console.error(error);
+    }
 
   }
 
@@ -92,7 +140,7 @@ const [addConnection, { }] = useMutation(ADD_CONNECTION);
         <div className='custom-container'>
           <div className='edit-profile-container row'>
             <div className='col-12 col-md-7 text-center'>
-              <img src='https://avatars.githubusercontent.com/u/74509058?v=4' alt='user avatar'
+              <img src='paperheart.png' alt='user avatar'
                 className='custom-img-thumbnail' />
               {/* possible modal with option to upload photo goes here */}
               {/* <br />
@@ -169,7 +217,7 @@ const [addConnection, { }] = useMutation(ADD_CONNECTION);
 
               <div className='text-center'>
                 <button className='btn btn-info btn-margin' type='submit'>Save Changes</button>
-                <button className='btn btn-danger btn-margin'>Delete Account</button>
+                <button className='btn btn-danger btn-margin' onClick={handleDeleteUser}>Delete Account</button>
               </div>
               </form>
               <br />
@@ -177,23 +225,21 @@ const [addConnection, { }] = useMutation(ADD_CONNECTION);
               <h4 className='text-center'>Edit Connections</h4>
 
               <div className='input-group mb-3'>
-                <input name='connection' type='text' className='form-control' placeholder='Enter Connection ID' 
-                onChange={handleUserInfoChange}
-                value={connectionID}
-                />
+                <input name='connection' type='text' className='form-control' placeholder='Enter Connection Username' onChange={handleUserInfoChange} value={connectionID}/>
                 <div className='input-group-append'>
-                  <button className='btn btn-outline-info' type='button'
-                  onClick={handleAddConnection}
-                  >Add Connection</button>
+                  <button className='btn btn-outline-info' type='button' onClick={handleAddConnection}>Add Connection</button>
                 </div>
               </div>
 
               {/* The following list needs to be dynamically rendered for every connection */}
               <ul className='list-group'>
-                <li className='list-group-item d-flex justify-content-between align-items-center'>
-                  <span id='connection-name'>Connection Name 1</span>
-                  <button className='btn btn-outline-danger' type='button'>Delete Connection</button>
-                </li>
+                {localAdminState.connections?.map((connection) => (
+                  <li className='list-group-item d-flex justify-content-between align-items-center'>
+                    <span id='connection-name'>{connection.username}</span>
+                    <button className='btn btn-outline-danger' type='button' onClick={handleRemoveConnection} value={connection._id}>Delete Connection</button>
+                  </li>
+                ))}
+
               </ul>
 
               <br />
