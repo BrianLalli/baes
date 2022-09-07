@@ -53,7 +53,7 @@ export default function UserProfile(){
           <li className="list-group-item"><strong className='strong-list-item'>Birthday: </strong>{user.birthday}</li>
           <li className="list-group-item"><strong className='strong-list-item'>Phobias: </strong>{user.phobias}</li>
           <li className="list-group-item"><strong className='strong-list-item'>Hobbies: </strong>{user.hobbies}</li>
-          <li className="list-group-item"><strong className='strong-list-item'>Connections: </strong>{user.connections}</li>
+          {/* <li className="list-group-item"><strong className='strong-list-item'>Connections: </strong>{user.connections}</li> */}
         </ul>
       {/* </div> */}
 

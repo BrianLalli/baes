@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { Link } from 'react-router-dom';
-import { ADD_CONNECTION, DELETE_CONNECTION, UPDATE_USER } from '../../utils/mutations';
+import { ADD_CONNECTION, DELETE_CONNECTION, UPDATE_USER, DELETE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
 // import { QUERY_ME } from '../../utils/queries'
@@ -24,7 +24,8 @@ export default function Admin({ adminState, setAdminState }) {
   //logic to save state of each input that user submits
   //click save changes -> mutuation to update user 
 
-  const [updateUser , { error: userError, data: userData }] = useMutation(UPDATE_USER);
+  const [updateUser , { error: addUserError, data: addUserData }] = useMutation(UPDATE_USER);
+  const [deleteUser, {error: delUserError, data: delUserData}] = useMutation(DELETE_USER);
   const [addConnection, { error: addError, data: addData }] = useMutation(ADD_CONNECTION); 
   const [deleteConnection, { error: deleteError, data: removeData }] = useMutation(DELETE_CONNECTION); 
 
@@ -45,8 +46,6 @@ export default function Admin({ adminState, setAdminState }) {
     // console.log(localAdminState)
   };
 
-
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -58,6 +57,7 @@ export default function Admin({ adminState, setAdminState }) {
         ...adminState,
         ...localAdminState
       });
+      window.location.reload();
       // console.log("adminstate", adminState)
       // console.log("localstate", localAdminState)
     } catch (error) {
@@ -78,7 +78,7 @@ export default function Admin({ adminState, setAdminState }) {
         ...localAdminState,
         connections:data.addConnection.connections
       })
-
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -97,6 +97,10 @@ export default function Admin({ adminState, setAdminState }) {
       connections: data.deleteConnection.connections
     })
   }
+
+  const handleDeleteUser = async (e) => {
+
+  };
 
 
   // error form
