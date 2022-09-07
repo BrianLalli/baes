@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Style from "../Navbar/Navbar.module.scss";
-import Toggler from "../Toggler/Toggler";
 import { Link, useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import Auth from '../../utils/auth'

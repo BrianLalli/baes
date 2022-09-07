@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Style from "./home.module.scss";
-import me from "../../img/self.png";
-import partner1 from "../../img/Partner1.png"
+// import me from "../../img/self.png";
+// import partner1 from "../../img/Partner1.png"
 import { Box } from "@mui/material";
 import {Link, useLocation} from "react-router-dom";
 
@@ -9,17 +9,17 @@ import {Link, useLocation} from "react-router-dom";
 
 let colors = ["rgb(0, 128, 128)", "rgb(224, 81, 171)"];
 
-const info = {
-    firstName: "Brian",
-    lastName: "Lalli",
-    selfPortrait: "self", // don't change this unless you want to name your self-portrait in the "img" folder something else!
-    partner1: "partner1",
-    // partner2: "partner2",
-    // partner3: "partner3",
-    // partner3: "partner3",
-    gradient: `-webkit-linear-gradient(135deg, ${colors})`, // don't change this either
-    baseColor: colors[0],
-  };
+// const info = {
+//     firstName: "Brian",
+//     lastName: "Lalli",
+//     selfPortrait: "self", // don't change this unless you want to name your self-portrait in the "img" folder something else!
+//     partner1: "partner1",
+//     // partner2: "partner2",
+//     // partner3: "partner3",
+//     // partner3: "partner3",
+//     gradient: `-webkit-linear-gradient(135deg, ${colors})`, // don't change this either
+//     baseColor: colors[0],
+//   };
 
   
   export default function Home() {
@@ -125,3 +125,4 @@ const info = {
     //   </Box>
     //   );
     }
+
