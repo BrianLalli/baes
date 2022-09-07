@@ -14,7 +14,7 @@ const handleLogout = () => {
 };
 const links = [
   {
-    name: "Bae/s",
+    name: "Baes",
     type: "Logo",
     // src: "../Logo/LogoElephant3.png",
     to: "/",
@@ -123,7 +123,7 @@ export default function Navbar({ handleClick }) {
           </Box>
         ):(
           <div>
-            <button className="btn btn-danger" onClick={handleLogout}>
+            <button className="custom-save-btn btn-margin" onClick={handleLogout}>
               Logout
             </button>
           </div>

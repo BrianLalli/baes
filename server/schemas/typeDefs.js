@@ -19,10 +19,9 @@ const typeDefs = gql`
 
   type Notes {
     _id: ID
-    title: String
     content: String
-    date: String
   }
+
 
   type Auth {
     token: ID!
@@ -82,19 +81,14 @@ const typeDefs = gql`
     ): User
 
     addNote(
-      userId: ID!
-      note: String
+      content: String!
     ): User
   
     updateNote(
-      userId: ID!
-      title: String
       content: String
     ): User
     
     removeNote(
-      userId: ID!
-      title: String
       content: String
     ): Int
   

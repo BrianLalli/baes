@@ -1,5 +1,6 @@
 import React from 'react';
 import Auth from '../../utils/auth';
+import './styles.css';
 
 
 export default function Logout () {
@@ -11,7 +12,8 @@ export default function Logout () {
 
   return (
     <div>
-      <button className='btn' onClick={handleLogout}>Logout</button>
+      <button className='custom-save-btn btn-margin' onClick={handleLogout}>Logout</button>
     </div>
   )
 }
+
