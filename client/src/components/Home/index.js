@@ -18,7 +18,9 @@ return (
   {
       userData.connections ? userData.connections.map(connection => {
           return (
+            <a href={`/profiles/${connection._id}`}>
               <li>{connection.username}</li>
+            </a>
           )
       }) : ""
   }
