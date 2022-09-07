@@ -77,8 +77,6 @@ const typeDefs = gql`
       user: ID!
     ): User
 
-
-
     deleteConnection(
       user: ID!
     ): User
@@ -90,15 +88,13 @@ const typeDefs = gql`
   
     updateNote(
       userId: ID!
-      title: String
       content: String
     ): User
     
     removeNote(
       userId: ID!
-      title: String
       content: String
-    ): Int
+    ): User
   
   }
 `;
