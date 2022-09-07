@@ -62,8 +62,9 @@ const userSchema = new Schema({
     ref: 'User'
   }
 ],
-  notes: [noteSchema]
-   
+  notes: 
+    [noteSchema]
+
   
 });
 
