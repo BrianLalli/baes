@@ -39,25 +39,17 @@ export default function UserProfile(){
       <h4 className="card-header m-0 col-12 col-lg-9 custom-card-header " id="userProfile">
         <strong className='strong-header m-2'>{user.username}'s Profile</strong>
       </h4>
-    
-      {/* <div className="card-body custom-card-body col-12 col-lg-9"> */}
-        <ul className="custom-list-group list-group-flush col-12 col-lg-9 custom-ul p-0">
-          <li className="custom-list-group-item ">User ID: {user._id}</li>
-          <li className="custom-list-group-item">
-            Email: 
-            {user.email}
-          </li>
-          <li className="custom-list-group-item">Allergies: {user.allergies}</li>
-          <li className="custom-list-group-item">Favorite Foods: {user.faveFoods}</li>
-          <li className="custom-list-group-item">Disliked Foods: {user.hateFoods}</li>
-          <li className="custom-list-group-item">Birthday: {user.birthday}</li>
-          <li className="custom-list-group-item">Phobias: {user.phobias}</li>
-          <li className="custom-list-group-item">Hobbies: {user.hobbies}</li>
-          {/* <li className="list-group-item"><strong className='strong-list-item'>Connections: </strong>{user.connections}</li> */}
-        </ul>
-      {/* </div> */}
-
-  </div>
+      <ul className="custom-list-group list-group-flush col-12 col-lg-9 custom-ul p-0">
+        <li className="custom-list-group-item ">User ID: <span className='cs-list-bg'>{user._id}</span></li>
+        <li className="custom-list-group-item">Email:  <span className='cs-list-bg'>{user.email}</span></li>
+        <li className="custom-list-group-item">Allergies:  <span className='cs-list-bg'>{user.allergies}</span></li>
+        <li className="custom-list-group-item">Favorite Foods:  <span className='cs-list-bg'>{user.faveFoods}</span></li>
+        <li className="custom-list-group-item">Disliked Foods:  <span className='cs-list-bg'>{user.hateFoods}</span></li>
+        <li className="custom-list-group-item">Birthday:  <span className='cs-list-bg'>{user.birthday}</span></li>
+        <li className="custom-list-group-item">Phobias: <span className='cs-list-bg'>{user.phobias}</span></li>
+        <li className="custom-list-group-item">Hobbies: <span className='cs-list-bg'>{user.hobbies}</span></li>
+      </ul>
+    </div>
   </div>
  )
 }

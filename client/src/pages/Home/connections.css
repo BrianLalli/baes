@@ -1,5 +1,5 @@
 .cs-card-title {
-    font-size: 150px;
+    font-size: 110px;
     color: #273057
 }
 
@@ -8,10 +8,12 @@
     border: 3px solid #273057;
 }
 
-.cs-button :hover {
-    background-color: #f4f1f5;
+.cs-hover :hover {
+    background-color: #EBA28C;
+    color: #008080;
 }
 
-.cs-Link {
+.cs-link {
     font-size: 50px;
+    background-color: transparent;
 }

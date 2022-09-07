@@ -20,17 +20,7 @@
 
 }
 
-/* .list-group :hover {
-    background-color: #EBA28C !important;
-} */
-
-/* .list-group-item {
-    background-color: #F4F1F5 !important;
-} */
-
-
 .strong-list-item {
-    /* background-color: #F4F1F5; */
     font-weight: bold;
 }
 
@@ -53,9 +43,11 @@
     margin-bottom: -1px;
     background-color: #F4F1F5;
     border: 1px solid rgba(0, 0, 0, 0.125);
+    color: #273057 !important;
+
 }
 
-.custom-list-group-item:first-child {
+/* .custom-list-group-item:first-child {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 }
@@ -64,13 +56,15 @@
     margin-bottom: 0;
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
-}
+} */
 
 .custom-list-group-item:hover,
 .custom-list-group-item:focus {
     z-index: 1;
     text-decoration: none;
-    background-color: #EBA28C
+    background-color: #EBA28C;
+    color: #273057;
+
 }
 
 .custom-list-group {
@@ -82,8 +76,19 @@
     margin-bottom: 0;
     background-color: #F4F1F5;
     font-weight: bold;
+    font-size: 30px;
 }
 
 .custom-list-group:hover {
-    background-color: #EBA28C
+    background-color: #EBA28C;
+    color: #273057;
+
+}
+
+.cs-list-bg {
+    background-color: transparent;
+    font-weight: normal;
+    font-size: 25px;
+    color: #008080;
+
 }

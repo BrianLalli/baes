@@ -18,7 +18,7 @@
 }
 
 .btn-link {
-    background-color: #008080 !important;
+    background-color: transparent !important;
     color: #f4f1f5 !important;
     font-family: 'Neucha', cursive;
     text-decoration: none !important;
@@ -42,6 +42,5 @@
 }
 
 .other-custom-btn:hover {
-    background-color: #016161;
-    font-size: bigger;
+    background-color: #EBA28C !important;
 }

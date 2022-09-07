@@ -36,17 +36,17 @@ export default function ProfileNavTabs(){
         // <div key={user._id} className="card mb-3 row">
            <div className='mt-4 container'>
                 <ul className="row nav nav-pills card-header-pills justify-content-md-center custom-nav">
-                    <li className="col-12 col-md-4 nav-item text-center">
+                    <li className="col-12 col-md-4 nav-item text-center cs">
                         <button className="btn btn-info custom-btn mb-1">
                             <Link className="btn-link navTabs" to='#profile'>Profile</Link>
                         </button>
                     </li>
-                    <li className="col-12 col-md-4 nav-item text-center">
+                    <li className="col-12 col-md-4 nav-item text-center cs">
                         <button className="btn btn-info custom-btn mb-1">
                             <Link className="btn-link" to='#addNote'>Add Note</Link>
                         </button>
                     </li>
-                    <li className="col-12 col-md-4 nav-item text-center">
+                    <li className="col-12 col-md-4 nav-item text-center cs">
                         <button className="btn btn-info custom-btn mb-1">
                             <Link className="btn-link" to='#notes'>View Notes</Link>
                         </button>
