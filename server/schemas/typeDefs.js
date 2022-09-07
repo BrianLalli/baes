@@ -79,7 +79,7 @@ const typeDefs = gql`
     ): User
 
     addNote(
-      _id: ID! 
+      userId: ID!
       content: String!
     ): User
   

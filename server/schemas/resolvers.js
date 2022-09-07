@@ -81,14 +81,13 @@ const resolvers = {
     }
   },
     // remove by id, remove from set: connection
-    addNote: async (parent, { content }, context) => {
+    addNote: async (parent, { userId, content }, context) => {
       if (context.user) {
       //  we need to create an object to insert into the users notes array. The object should have a key of content and a value of the actual note. This is because the notes schema has a content property
-        let test = { content: content }
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
+        return await User.findOneAndUpdate(
+          { _id: userId },
           {
-            $addToSet: { notes: test },
+            $addToSet: { notes: { content: content } },
           },
           {
             new: true,

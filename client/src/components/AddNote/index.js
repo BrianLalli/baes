@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_NOTE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
@@ -12,18 +12,22 @@ const AddNote = () => {
   });
   const [characterCount, setCharacterCount] = useState(0);
   const [addNote, { error }] = useMutation(ADD_NOTE);
+  
+  const { userId: userParam } = useParams();
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const {data} = addNote({
-        variables: { ...formState },
+        variables: { 
+        userId: userParam,
+        ...formState },
       });
-
       // window.location.reload();
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   };
 
