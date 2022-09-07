@@ -123,7 +123,7 @@ export default function Navbar({ handleClick }) {
           </Box>
         ):(
           <div>
-            <button className="btn btn-warning" onClick={handleLogout}>
+            <button className="btn btn-danger" onClick={handleLogout}>
               Logout
             </button>
           </div>
