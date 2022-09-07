@@ -82,14 +82,13 @@ mutation DeleteConnection($user: ID!) {
 
 // //add note
 export const ADD_NOTE = gql`
-mutation addNote($content: String!) {
-  addNote(content: $content) {
-  
+mutation addNote($userId: ID!, $content: String!) {
+  addNote(userId: $userId, content: $content) {
+    _id
+    notes {
       _id
-      notes{
-        content
-      }
-  
+      content
+    }
   }
 }
 `;

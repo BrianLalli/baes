@@ -69,8 +69,6 @@ const typeDefs = gql`
       user: ID!
     ): User
 
-
-
     addConnection(
       user: ID!
     ): User
@@ -81,6 +79,7 @@ const typeDefs = gql`
     ): User
 
     addNote(
+      userId: ID!
       content: String!
     ): User
   

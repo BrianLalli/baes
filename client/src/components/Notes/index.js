@@ -1,28 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useQuery } from '@apollo/client';
+import { Link, useParams } from 'react-router-dom';
 
-export default function Notes({ notes }){
+import { QUERY_SINGLE_USER, QUERY_ME } from '../../utils/queries';
+
+export default function  Notes(){
+
     // if (!notes.length) {
     //     return <h3>No Notes Yet</h3>
     // }
     
+    // const [userData, setUserData] = useState({})
+    const { userId } = useParams();
+
+    const { loading, data } = useQuery(
+
+        userId ? QUERY_SINGLE_USER : QUERY_ME,
+        {
+          variables: { userId: userId },
+        }
+      );
     
+      const user = data?.me || data?.user || {}
+
+   
     return (
       <div className="container mt-5" id='notes'>
-            {notes && notes.map((note) => (
+            {user.notes && user.notes.map((note) => (
                 <div key={note._id} className="card mb-3" >
                     <p>{note.content}</p>
                 </div>
             ))}
-
-
-            {/* <div className='row justify-content-center'>
-                <h2 className='col-12 col-lg-9'>Notes</h2>
-                <ul className="list-group col-12 col-lg-9">
-                    <li className="list-group-item">{note.content}</li>
-                    
-                </ul>
-            </div> */}
         </div>
     )
 }

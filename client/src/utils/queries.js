@@ -10,22 +10,36 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_SINGLE_USER = gql`
-  query user($userId: ID!) {
-    user(userId: $userId) {
+query Query($userId: ID!) {
+  user(userId: $userId) {
+    _id
+    username
+    password
+    email
+    allergies
+    hobbies
+    faveFoods
+    hateFoods
+    phobias
+    birthday
+    connections {
       _id
       username
+      password
       email
       allergies
+      hobbies
       faveFoods
       hateFoods
-      birthday
       phobias
-      hobbies
-      connections {
-        username
-      }
+      birthday
+    }
+    notes {
+      _id
+      content
     }
   }
+}
 `;
 
 export const QUERY_ME = gql`
@@ -52,6 +66,10 @@ query Query {
       hateFoods
       phobias
       birthday
+    }
+    notes {
+      _id
+      content
     }
   }
 }

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./connections.css"
+import { Navigate, useParams, Link } from 'react-router-dom';
 
+import "./connections.css"
+import Auth from '../../utils/auth'
 
 
 export default function Home({userState}) {
+  
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />
+  }
+
 
   const [userData, setUserData] = useState({});
 

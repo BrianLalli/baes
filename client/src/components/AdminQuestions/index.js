@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 import { ADD_CONNECTION, DELETE_CONNECTION, UPDATE_USER, DELETE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import './admin.css';
+// import { QUERY_ME } from '../../utils/queries'
 
+
+//missing functionality to text boxes
 
 export default function Admin({ adminState, setAdminState }) {
 
@@ -83,7 +86,7 @@ export default function Admin({ adminState, setAdminState }) {
 
   const handleRemoveConnection = async(e) => {
     e.preventDefault();
-  //  console.log(e.target.value)
+   console.log(e.target.value)
 
    try {
     const { data } = await deleteConnection({
@@ -104,7 +107,7 @@ export default function Admin({ adminState, setAdminState }) {
     e.preventDefault();
     try {
       const { data } = Auth.getProfile();
-      // console.log(data._id)
+      console.log(data._id)
       const { data: deleteData } = await deleteUser({
         variables: {user: data._id }
       })
@@ -117,13 +120,25 @@ export default function Admin({ adminState, setAdminState }) {
   };
 
 
+  // error form
+  const handleErrorSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+
   return (
     <div>
       {Auth.loggedIn() ? (
         <div className='custom-container'>
           <div className='edit-profile-container row'>
             <div className='col-12 col-md-7 text-center'>
-              <img src='https://ca.slack-edge.com/T03ENUM2YP6-U03KK98PZ4Y-df7cd564e624-512' alt='user avatar'
+              <img src='paperheart.png' alt='user avatar'
                 className='custom-img-thumbnail' />
               {/* possible modal with option to upload photo goes here */}
               {/* <br />
@@ -135,6 +150,8 @@ export default function Admin({ adminState, setAdminState }) {
                   <input type='file' className='form-control-file' id='uploadPhoto' />
                 </div>
               </form> */}
+
+
               <h2 id='username'>{localAdminState.username}</h2>
               <h4>Edit account information.</h4>
               <form className='custom-text-align' onSubmit={handleFormSubmit}>
@@ -142,6 +159,15 @@ export default function Admin({ adminState, setAdminState }) {
                   <label htmlFor='inputUsername'>Update Username</label>
                   <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='username' value={localAdminState.username} />
                 </div>
+
+                {/* <div className='form-group'>
+                  <label htmlFor='inputPassword'>Update Password</label>
+                  <input onChange={handleUserInfoChange} name='password' type='password' className='form-control' id='inputPassword' placeholder='******' />
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='confirmPassword'>Confirm Password</label>
+                  <input onChange={handleUserInfoChange} name='confirm-password' type='password' className='form-control' id='confirmPassword' placeholder='********' />
+                </div> */}
 
                 <div className='form-group'>
                   <label htmlFor='inputEmail'>Update Email</label>
@@ -187,7 +213,7 @@ export default function Admin({ adminState, setAdminState }) {
               <br />
 
               <div className='text-center'>
-                <button className='custom-save-btn btn-margin' type='submit'>Save Changes</button>
+                <button className='btn btn-info btn-margin' type='submit'>Save Changes</button>
                 <button className='btn btn-danger btn-margin' onClick={handleDeleteUser}>Delete Account</button>
               </div>
               </form>
@@ -210,8 +236,12 @@ export default function Admin({ adminState, setAdminState }) {
                     <button className='btn btn-outline-danger' type='button' onClick={handleRemoveConnection} value={connection._id}>Delete Connection</button>
                   </li>
                 ))}
+
               </ul>
+
               <br />
+
+
             </div>
           </div>
         </div>

@@ -81,8 +81,33 @@
   font-weight: bolder;
 }
 
+label {
+  line-height: 100%;
+  align-self: end;
+}
 
 #connection-name {
   background: transparent;
   font-weight: bold;
 } 
+
+.custom-form {
+  width: 100%;
+  border-radius: 7px;
+  line-height: 200%;
+  padding: 0 10px;
+  margin-top: -50px;
+  border: 2px solid var(--blue);
+  color: var(--green);
+  font-weight: bolder;
+}
+
+.custom-form:focus{
+  outline: none !important;
+  background: white;
+}
+
+.custom-form::placeholder {
+  color: #999999;
+}
+ 
