@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useParams, Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 import "./connections.css"
 import Auth from '../../utils/auth'
@@ -7,16 +7,18 @@ import Auth from '../../utils/auth'
 
 export default function Home({userState}) {
   
-  if (!Auth.loggedIn()) {
-    return <Navigate to="/login" />
-  }
-
-
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
     setUserData(userState)
   }, [userState])
+
+
+  if (!Auth.loggedIn()) {
+    return <Navigate to="/login" />
+  }
+
+
 
 return (
   <>

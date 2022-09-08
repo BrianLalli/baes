@@ -157,21 +157,21 @@ export default function Admin({ adminState, setAdminState }) {
               <form className='custom-text-align' onSubmit={handleFormSubmit}>
                 <div className='form-group'>
                   <label htmlFor='inputUsername'>Update Username</label>
-                  <input onChange={handleUserInfoChange} name='username' type='text' className='form-control' id='inputUsername' placeholder='username' value={localAdminState.username} />
+                  <input onChange={handleUserInfoChange} name='username' type='text' className='custom-form' id='inputUsername' placeholder='username' value={localAdminState.username} />
                 </div>
 
                 {/* <div className='form-group'>
                   <label htmlFor='inputPassword'>Update Password</label>
-                  <input onChange={handleUserInfoChange} name='password' type='password' className='form-control' id='inputPassword' placeholder='******' />
+                  <input onChange={handleUserInfoChange} name='password' type='password' className='custom-form' id='inputPassword' placeholder='******' />
                 </div>
                 <div className='form-group'>
                   <label htmlFor='confirmPassword'>Confirm Password</label>
-                  <input onChange={handleUserInfoChange} name='confirm-password' type='password' className='form-control' id='confirmPassword' placeholder='********' />
+                  <input onChange={handleUserInfoChange} name='confirm-password' type='password' className='custom-form' id='confirmPassword' placeholder='********' />
                 </div> */}
 
                 <div className='form-group'>
                   <label htmlFor='inputEmail'>Update Email</label>
-                  <input onChange={handleUserInfoChange} name='email' type='email' className='form-control' id='inputEmail' placeholder='whiskers@yahoo.com' value={localAdminState.email}/>
+                  <input onChange={handleUserInfoChange} name='email' type='email' className='custom-form' id='inputEmail' placeholder='whiskers@yahoo.com' value={localAdminState.email}/>
                   <small id='emailHelp' className='form-text text-muted'>We'll never share your email with anyone else.</small>
                 </div>
                 <br />
@@ -180,33 +180,33 @@ export default function Admin({ adminState, setAdminState }) {
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='allergies'>Allergies</label>
-                    <input onChange={handleUserInfoChange} name='allergies' type='text' className='form-control' id='allergies' placeholder='Allergies' value={localAdminState.allergies}/>
+                    <input onChange={handleUserInfoChange} name='allergies' type='text' className='custom-form' id='allergies' placeholder='Allergies' value={localAdminState.allergies}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='hobbies'>Hobbies</label>
-                    <input onChange={handleUserInfoChange} name='hobbies' type='text' className='form-control' id='hobbies' placeholder='Hobbies' value={localAdminState.hobbies}/>
+                    <input onChange={handleUserInfoChange} name='hobbies' type='text' className='custom-form' id='hobbies' placeholder='Hobbies' value={localAdminState.hobbies}/>
                   </div>
                 </div>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='faveFoods'>Favorite Foods</label>
-                    <input onChange={handleUserInfoChange} name='faveFoods' type='text' className='form-control' id='faveFoods' placeholder='Foods I Like' value={localAdminState.faveFoods}/>
+                    <input onChange={handleUserInfoChange} name='faveFoods' type='text' className='custom-form' id='faveFoods' placeholder='Foods I Like' value={localAdminState.faveFoods}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='hateFoods'>Loathed Foods</label>
-                    <input onChange={handleUserInfoChange} name='hateFoods' type='text' className='form-control' id='hateFoods' placeholder='Foods I Dislike' value={localAdminState.hateFoods}/>
+                    <input onChange={handleUserInfoChange} name='hateFoods' type='text' className='custom-form' id='hateFoods' placeholder='Foods I Dislike' value={localAdminState.hateFoods}/>
                   </div>
                 </div>
 
                 <div className='row'>
                   <div className='col'>
                     <label htmlFor='phobias'>Phobias</label>
-                    <input onChange={handleUserInfoChange} name='phobias' type='text' className='form-control' id='phobias' placeholder='Phobias' value={localAdminState.phobias}/>
+                    <input onChange={handleUserInfoChange} name='phobias' type='text' className='custom-form' id='phobias' placeholder='Phobias' value={localAdminState.phobias}/>
                   </div>
                   <div className='col'>
                     <label htmlFor='birthday'>Birthday</label>
-                    <input onChange={handleUserInfoChange} name='birthday' type='text' className='form-control'
+                    <input onChange={handleUserInfoChange} name='birthday' type='text' className='custom-form'
                       id='birthday' placeholder='Birthday' value={localAdminState.birthday}/>
                   </div>
                 </div>
