@@ -24,14 +24,16 @@ export default function  Notes(){
       const user = data?.me || data?.user || {}
    
     return (
-      <div className="container mt-5" id='notes'>
-          <h2>Notes:</h2>
+      <div className="container mt-5 card" id='notes'>
+        <div className="row justify-content-center">
+          <h2 className="col-12 col-lg-9 card-title">Notes:</h2>
             {user.notes && user.notes.map((note) => (
-                <div key={note._id}>
-                    <p>{note.content}</p>
-                </div>
+                <ul className="col-12 col-lg-9 list-item-goup" key={note._id}>
+                    <li className="col-12 col-lg-9">{note.content}</li>
+                </ul>
             ))}
         </div>
+      </div>
     )
 }
 
