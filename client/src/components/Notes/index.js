@@ -22,12 +22,12 @@ export default function  Notes(){
       );
     
       const user = data?.me || data?.user || {}
-
    
     return (
       <div className="container mt-5" id='notes'>
+          <h2>Notes:</h2>
             {user.notes && user.notes.map((note) => (
-                <div key={note._id} className="card mb-3" >
+                <div key={note._id}>
                     <p>{note.content}</p>
                 </div>
             ))}
