@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Deployed Link
-Click [here]().
+Click [here](https://loversnotfighters.herokuapp.com/).
 
 ## Description
 Full Stack MERN application that allows users to store information pertaining to important relationships. 
